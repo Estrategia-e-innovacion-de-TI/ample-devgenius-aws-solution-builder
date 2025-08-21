@@ -1,65 +1,68 @@
-# DevGenius - AWS Solution Generator
+# DevGenius - Generador de Soluciones AWS
 
-DevGenius is an AI-powered application that transforms project ideas into complete, ready-to-deploy AWS solutions. It leverages Amazon Bedrock and Claude AI models to provide architecture diagrams, cost estimates, infrastructure as code, and comprehensive technical documentation.
+DevGenius es una aplicación impulsada por IA que transforma ideas de proyectos en soluciones completas y listas para desplegar en AWS. Utiliza Amazon Bedrock y los modelos de Claude AI para proporcionar diagramas de arquitectura, estimaciones de costos, infraestructura como código y documentación técnica integral.
 
-![Watch the demo video](demo/DevGenius_Demo.gif)
+![Mira el video demo](demo/DevGenius_Demo.gif)
 
-**Conversational Solution Architecture Building:** DevGenius enables customers to design solution architectures in a conversational manner. Users can create architecture diagrams (in draw.io format) and refine them interactively. Once the design is finalized, they can generate end-to-end code automation using CDK or CloudFormation templates, and deploy it in their AWS account with a single click. Additionally, customers can receive cost estimates for running the architecture in production, along with detailed documentation for the solution.
+**Construcción Conversacional de Arquitecturas de Solución:**  
+DevGenius permite a los clientes diseñar arquitecturas de solución de forma conversacional. Los usuarios pueden crear diagramas de arquitectura (en formato draw.io) y refinarlos interactivamente. Una vez finalizado el diseño, pueden generar automatización de código de extremo a extremo usando CDK o plantillas de CloudFormation, y desplegarlo en su cuenta de AWS con un solo clic. Además, los clientes pueden recibir estimaciones de costos para ejecutar la arquitectura en producción, junto con documentación detallada de la solución.
 
-**Build Solution Architecture from Whiteboard Drawings:** For customers who already have their architecture in image form (e.g., whiteboard drawings), DevGenius allows them to upload the image. Once uploaded, DevGenius analyzes the architecture and provides a detailed explanation. Customer can then refine the design conversationally and, once finalized, generate end-to-end code automation using CDK or CloudFormation. Cost estimates and comprehensive documentation are also available.
+**Construcción de Arquitecturas desde Dibujos en Pizarra:**  
+Para clientes que ya tengan su arquitectura en forma de imagen (por ejemplo, dibujos en pizarra), DevGenius les permite subir la imagen. Una vez cargada, DevGenius analiza la arquitectura y proporciona una explicación detallada. Luego, el cliente puede refinar el diseño de manera conversacional y, una vez finalizado, generar la automatización de código de extremo a extremo con CDK o CloudFormation. También se incluyen estimaciones de costos y documentación integral.
 
-## Features
+## Características
 
-- **Solution Architecture Generation**: Create AWS architectures based on your project requirements
-- **Architecture Diagram Creation**: Generate visual representations of your AWS solutions
-- **Infrastructure as Code**: Generate both AWS CDK and CloudFormation templates
-- **Cost Estimation**: Get detailed cost breakdowns for all proposed AWS services
-- **Technical Documentation**: Generate comprehensive documentation for your solutions
-- **Existing Architecture Analysis**: Upload and analyze existing architecture diagrams
+- **Generación de Arquitecturas de Solución**: Crear arquitecturas AWS basadas en tus requisitos de proyecto  
+- **Creación de Diagramas de Arquitectura**: Generar representaciones visuales de tus soluciones en AWS  
+- **Infraestructura como Código**: Generar tanto plantillas AWS CDK como CloudFormation  
+- **Estimación de Costos**: Obtener desglose detallado de costos para todos los servicios AWS propuestos  
+- **Documentación Técnica**: Generar documentación completa de tus soluciones  
+- **Análisis de Arquitecturas Existentes**: Subir y analizar diagramas de arquitectura existentes  
 
-## Architecture Overview
+## Descripción de la Arquitectura
 
-DevGenius is built using a modern cloud-native architecture:
+DevGenius está construido con una arquitectura moderna nativa en la nube:
 
-- **Frontend**: Streamlit-based UI for intuitive interaction
-- **AI Engine**: Amazon Bedrock with Claude AI models for solution generation
-- **Knowledge Base**: Amazon Bedrock Knowledge Base with AWS documentation sources
-- **Vector Storage**: Amazon OpenSearch Serverless for vector embeddings
-- **Data Storage**:
-  - Amazon S3 for storing generated assets
-  - DynamoDB for conversation and session tracking
-- **Deployment**:
-  - AWS ECS Fargate for containerized application hosting
-  - CloudFront for content distribution
-  - Application Load Balancer for traffic management
-- **Authentication**: Amazon Cognito for user authentication
+- **Frontend**: Interfaz basada en Streamlit para interacción intuitiva  
+- **Motor de IA**: Amazon Bedrock con modelos Claude AI para generación de soluciones  
+- **Base de Conocimiento**: Amazon Bedrock Knowledge Base con fuentes de documentación AWS  
+- **Almacenamiento Vectorial**: Amazon OpenSearch Serverless para embeddings vectoriales  
+- **Almacenamiento de Datos**:  
+  - Amazon S3 para almacenar artefactos generados  
+  - DynamoDB para seguimiento de conversaciones y sesiones  
+- **Despliegue**:  
+  - AWS ECS Fargate para alojamiento de aplicaciones en contenedores  
+  - CloudFront para distribución de contenido  
+  - Application Load Balancer para gestión de tráfico  
+- **Autenticación**: Amazon Cognito para autenticación de usuarios  
 
-## Prerequisites
+## Requisitos Previos
 
-- AWS Account with appropriate permissions
-- AWS CLI configured with credentials
-- Python 3.12 or later
-- Docker (for container builds and local development)
-- Access to Amazon Bedrock models (Claude-3-Sonnet/Claude-3-5-Sonnet)
+- Cuenta AWS con permisos apropiados  
+- AWS CLI configurado con credenciales  
+- Python 3.12 o posterior  
+- Docker (para compilación de contenedores y desarrollo local)  
+- Acceso a modelos Amazon Bedrock (Claude-3-Sonnet/Claude-3-5-Sonnet)  
 
-## Installation and Setup
+## Instalación y Configuración
 
-### Local Development
+### Desarrollo Local
 
-1. Clone the repository:
+1. Clona el repositorio:
 
    ```bash
    git clone https://github.com/aws-samples/sample-devgenius-aws-solution-builder.git devgenius
    cd devgenius
+
    ```
 
-2. Install the required dependencies:
+2. Instala las dependencias requeridas:
 
    ```bash
    npm install
    ```
 
-3. Set up the required environment variables. Replace all the values that follow the pattern <REPLACE_ME_XXX>:
+3. Configura las variables de entorno necesarias. Reemplaza todos los valores que siguen el patrón <REPLACE_ME_XXX>:
 
    ```bash
    export AWS_REGION="us-west-2"
@@ -71,15 +74,15 @@ DevGenius is built using a modern cloud-native architecture:
    export SESSION_TABLE_NAME="<REPLACE_ME_SESSION_TABLE_NAME>"
    ```
 
-4. Run the application:
+4. Ejecuta la aplicación:
 
    ```bash
    streamlit run chatbot/agent.py
    ```
 
-### Docker Deployment
+### Despliegue con Docker
 
-Build and run using Docker after replacing all the values that follow the pattern <REPLACE_ME_XXX>:
+Construye y ejecuta usando Docker después de reemplazar los valores <REPLACE_ME_XXX>:
 
 ```bash
 cd chatbot
@@ -95,105 +98,105 @@ docker run -p 8501:8501 \
   devgenius
 ```
 
-## AWS Infrastructure Deployment
+## Despliegue de Infraestructura AWS
 
-DevGenius includes a CDK stack that deploys all required infrastructure:
+DevGenius incluye un stack CDK que despliega toda la infraestructura requerida:
 
-1. Install the CDK toolkit:
+1. Instala la herramienta CDK:
 
    ```bash
    npm install -g aws-cdk
    ```
 
-2. From the root of the repository, install dependencies:
+2. Desde la raíz del repositorio, instala dependencias:
 
    ```bash
    npm install
    ```
 
-3. Bootstrap the account:
+3. Inicializa la cuenta:
 
    ```bash
    cdk bootstrap
    ```
 
-4. Deploy the stack:
+4. Despliega el stack:
 
    ```bash
    cdk deploy --all --context stackName=devgenius
    ```
 
-5. To destroy the infrastructure when no longer needed:
+5. Para destruir la infraestructura cuando ya no sea necesaria:
 
    ```bash
    cdk destroy --all --context stackName=devgenius
    ```
 
-   This command will remove all AWS resources created by the stack. You'll be prompted to confirm before the deletion proceeds. Note that this action is irreversible and will delete all application data stored in the deployed resources.
+   Este comando eliminará todos los recursos AWS creados por el stack. Se pedirá confirmación antes de proceder. Nota que esta acción es irreversible y eliminará todos los datos de la aplicación almacenados en los recursos desplegados.
 
-The CDK stack deploys:
+El stack CDK despliega:
 
-- VPC with public/private subnets
-- ECS Fargate service with Streamlit container
-- Application Load Balancer
-- CloudFront distribution with Lambda@Edge for authentication
-- Cognito user pool and identity pool
-- DynamoDB tables for conversation tracking
-- S3 bucket for storing generated assets
-- Bedrock Agent with Knowledge Base
-- OpenSearch Serverless collection for vector embeddings
+VPC con subredes públicas/privadas
+   - Servicio ECS Fargate con contenedor Streamlit
+   - Application Load Balancer
+   - Distribución CloudFront con Lambda@Edge para autenticación
+   - Pool de usuarios e identidad Cognito
+   - Tablas DynamoDB para seguimiento de conversaciones
+   - Bucket S3 para almacenar artefactos generados
+   - Agente Bedrock con Base de Conocimiento
+   - Colección OpenSearch Serverless para embeddings vectoriales
 
-## Usage Guide
+## Guía de uso
 
-### Authentication
+### Autenticación
 
-1. Access the application URL provided in the CDK output (named StreamlitUrl)
-2. Create (Sign up) for a new user account in Cognito in the landing page or sign in with existing credentials
-3. Accept the terms and conditions
+1. Accede a la URL de la aplicación proporcionada en la salida de CDK (llamada StreamlitUrl)
+2. Regístrate (Sign up) para una nueva cuenta en Cognito en la página de inicio o inicia sesión con credenciales existentes
+3. Acepta los términos y condiciones
 
-### Building a New Solution
+### Construcción de una nueva solución
 
-1. Navigate to the "Build a solution" tab
-2. Select a topic (Data Lake, Log Analytics)
-3. Answer the discovery questions about your requirements
-4. Review the generated solution
+1. Navega a la pestaña "Build a solution"
+2. Selecciona un tema (Data Lake, Log Analytics)
+3. Responde las preguntas de descubrimiento sobre tus requisitos
+4. Revisa la solución generada
 5. Use the option tabs to generate additional assets:
-   - Cost Estimates: Get detailed pricing breakdown
-   - Architecture Diagram: Visual representation of the solution
-   - CDK Code: infrastructure as code
-   - CloudFormation Code: YAML templates
-   - Technical Documentation: Comprehensive solution documentation
+   - Estimación de Costos: desglose detallado de precios
+   - Diagrama de Arquitectura: representación visual de la solución
+   - Código CDK: infraestructura como código
+   - Código CloudFormation: plantillas YAML
+   - Documentación Técnica: documentación completa de la solución
 
-### Analyzing Existing Architecture
+### Análisis de Arquitecturas Existentes
 
-1. Navigate to the "Modify your existing architecture" tab
-2. Upload an architecture diagram image (PNG/JPG format)
-3. The application will analyze the diagram and provide insights
-4. Use the option tabs to generate modifications and improvements
+1. Navega a la pestaña "Modify your existing architecture"
+2. Sube una imagen del diagrama de arquitectura (formato PNG/JPG)
+3. La aplicación analizará el diagrama y proporcionará información
+4. Usa las pestañas de opciones para generar modificaciones y mejoras
 
-## Key Components
+## Componentes Clave
 
-### Bedrock Agent and Knowledge Base
+### Agente Bedrock y Base de Conocimiento
 
-DevGenius uses Amazon Bedrock Agents with a custom Knowledge Base containing AWS documentation, whitepapers, and blogs. The agent is configured with specialized prompts to generate AWS solutions following best practices.
+DevGenius utiliza Agentes de Amazon Bedrock con una Base de Conocimiento personalizada que contiene documentación, whitepapers y blogs de AWS. El agente está configurado con prompts especializados para generar soluciones AWS siguiendo mejores prácticas.
 
-Knowledge base sources include:
+Fuentes de la base de conocimiento incluyen:
 
 - AWS Well-Architected Analytics Lens
-- AWS Whitepapers on data streaming and analytics architectures
-- AWS documentation on data lakes
-- AWS architecture blog posts
-- AWS service announcements
+- Whitepapers de AWS sobre arquitecturas de streaming y analítica de datos
+- Documentación AWS sobre data lakes
+- Publicaciones del blog de arquitectura AWS
+- Anuncios de servicios AWS
 
-### Vector Search with OpenSearch Serverless
+### Búsqueda Vectorial con OpenSearch Serverless
 
-Architecture information is stored as vector embeddings in Amazon OpenSearch Serverless, enabling semantic search and retrieval of relevant architectural patterns.
+La información de arquitectura se almacena como embeddings vectoriales en Amazon OpenSearch Serverless, lo que permite búsqueda semántica y recuperación de patrones arquitectónicos relevantes.
 
-### Infrastructure as Code Generation
+### Generación de Infraestructura como Código
 
-The application can generate both AWS CDK (TypeScript) and CloudFormation (YAML) templates for deploying the proposed solutions.
+La aplicación puede generar tanto plantillas AWS CDK (TypeScript) como CloudFormation (YAML) para desplegar las soluciones propuestas.
 
-## Project Structure
+## Estructura del Proyecto
 
 ```txt
 ├── chatbot/                      # Code for chatbot
@@ -214,17 +217,15 @@ The application can generate both AWS CDK (TypeScript) and CloudFormation (YAML)
    └── edge-lambda/               # CloudFront Lambda@Edge function
 ```
 
-## Security
+## Seguridad
 
-DevGenius includes several security features:
+DevGenius incluye varias características de seguridad:
 
-- Cognito authentication for user management
-- CloudFront with Lambda@Edge for request validation
-- IAM roles with least privilege permissions
-- VPC with security groups for network isolation
-- S3 bucket with encryption for asset storage
-- DynamoDB tables with encryption for data storage
+- Autenticación con Cognito para gestión de usuarios
+- CloudFront con Lambda@Edge para validación de solicitudes
+- Roles IAM con permisos de menor privilegio
+- VPC con grupos de seguridad para aislamiento de red
+- Bucket S3 con cifrado para almacenamiento de artefactos
+- Tablas DynamoDB con cifrado para almacenamiento de datos
 
-## License
 
-Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.

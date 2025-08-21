@@ -16,6 +16,7 @@ from generate_arch_widget import generate_arch
 from generate_cdk_widget import generate_cdk
 from generate_cfn_widget import generate_cfn
 from generate_doc_widget import generate_doc
+from dsl_code_widget import generate_dsl
 import io
 
 # Streamlit configuration 
@@ -246,6 +247,8 @@ else:
                     generate_cfn(st.session_state.messages)
                 with devgenius_option_tabs[4]:
                     generate_doc(st.session_state.messages)
+                with devgenius_option_tabs[5]:
+                    generate_dsl(st.session_state.messages)
                 enable_artifacts_download()
 
             save_conversation(st.session_state['conversation_id'], prompt, agent_answer)
@@ -317,6 +320,9 @@ else:
         if 'generate_doc_called' not in st.session_state:
             st.session_state.generate_doc_called = False
 
+        if 'generate_dsl_called' not in st.session_state:
+            st.session_state.generate_dsl_called = False
+
         # Display chat history
         for msg in st.session_state.mod_messages:
             if msg["role"] == "user":
@@ -352,6 +358,12 @@ else:
                 if not st.session_state.generate_doc_called:
                     generate_doc(st.session_state.mod_messages)
                     st.session_state.generate_doc_called = True
+            
+            with devgenius_option_tabs[5]:
+                if not st.session_state.generate_dsl_called:
+                    generate_dsl(st.session_state.mod_messages)
+                    st.session_state.generate_dsl_called = True
+                
 
             if st.session_state.interaction:
                 enable_artifacts_download()
@@ -363,6 +375,7 @@ else:
             st.session_state.generate_cfn_called = False
             st.session_state.generate_cost_estimates_called = False
             st.session_state.generate_doc_called = False
+            st.session_state.generate_dsl_called = False
 
             # when the user refines the solution , reset checkbox of all tabs
             # and force user to re-check to generate updated solution
@@ -371,6 +384,7 @@ else:
             st.session_state.cdk = False
             st.session_state.cfn = False
             st.session_state.doc = False
+            st.session_state.dsl = False
 
             st.session_state.mod_messages.append({"role": "user", "content": prompt})
             st.chat_message("user").markdown(prompt)
