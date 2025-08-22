@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/python:3.12.2-slim-bullseye
+FROM --platform=linux/amd64 public.ecr.aws/docker/library/python:3.12.2-slim-bullseye
 RUN apt-get update && apt-get install --no-install-recommends -y vim gcc graphviz && apt-get clean && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY ./ /app/

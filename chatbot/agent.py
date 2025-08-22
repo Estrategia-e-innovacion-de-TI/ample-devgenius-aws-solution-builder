@@ -184,7 +184,7 @@ else:
 
     # Tab for "Generate Architecture Diagram and Solution"
     with tabs[0]:
-        st.header("Generate Architecture Diagram and Solution")
+        st.header("Generar Arquitectura y Diagrama de Solución")
 
         if "topic_selector" not in st.session_state:
             st.session_state.topic_selector = ""

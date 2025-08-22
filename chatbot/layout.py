@@ -119,7 +119,7 @@ def welcome_sidebar():
             </style>
         """, unsafe_allow_html=True)
 
-        if st.button("New Session", use_container_width=True):
+        if st.button("Nueva sesión", use_container_width=True):
             st.session_state.user_authenticated = False
             st.session_state.messages = []
             st.session_state.mod_messages = []
