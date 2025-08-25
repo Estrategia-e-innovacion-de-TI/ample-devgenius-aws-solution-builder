@@ -19,6 +19,10 @@ from generate_doc_widget import generate_doc
 from dsl_code_widget import generate_dsl
 import io
 
+# Environment variables from .env file
+from dotenv import load_dotenv
+load_dotenv()
+
 # Streamlit configuration 
 st.set_page_config(page_title="DevGenius", layout='wide')
 apply_styles()
@@ -32,7 +36,7 @@ sts_client = boto3.client('sts', region_name=AWS_REGION)
 dynamodb_resource = boto3.resource('dynamodb', region_name=AWS_REGION)
 
 ACCOUNT_ID = sts_client.get_caller_identity()["Account"]
-# Constants
+# Constants 
 BEDROCK_MODEL_ID = f"arn:aws:bedrock:{AWS_REGION}:{ACCOUNT_ID}:inference-profile/us.anthropic.claude-3-5-sonnet-20241022-v2:0"  # noqa
 CONVERSATION_TABLE_NAME = retrieve_environment_variables("CONVERSATION_TABLE_NAME")
 FEEDBACK_TABLE_NAME = retrieve_environment_variables("FEEDBACK_TABLE_NAME")
