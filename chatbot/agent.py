@@ -82,7 +82,7 @@ def get_image_insights(image_data, query="Explain in detail the architecture flo
         streaming_response = bedrock_client.converse_stream(
             modelId=BEDROCK_MODEL_ID,
             messages=messages,
-            inferenceConfig={"maxTokens": 2000, "temperature": 0.1, "topP": 0.9}
+            inferenceConfig={"maxTokens": 2000, "temperature": 0.0, "topP": 0.9}
         )
 
         full_response = ""
@@ -121,7 +121,7 @@ def reset_messages():
     # st.session_state['conversation_id'] = str(uuid.uuid4())
 
     initial_question = get_initial_question(st.session_state.topic_selector)
-    st.session_state.messages = [{"role": "assistant", "content": "Welcome to DevGenius — turning ideas into reality. Together, we’ll design your architecture and solution, with each conversation shaping your vision. Let’s get started on building!"}]
+    st.session_state.messages = [{"role": "assistant", "content": "Bienvenido a DevGenius: convirtiendo ideas en realidad. Juntos diseñaremos tu arquitectura y solución, con cada conversación dando forma a tu visión. ¡Comencemos a construir!"}]
 
     if initial_question:
         st.session_state.messages.append({"role": "user", "content": initial_question})
@@ -138,9 +138,55 @@ def format_for_markdown(response_text):
 
 def get_initial_question(topic):
     return {
+        # Data Lake y Analytics
         "Data Lake": "How can I build an enterprise data lake on AWS?",
-        "Log Analytics": "How can I build a log analytics solution on AWS?"
+        "Log Analytics": "How can I build a log analytics solution on AWS?",
+        
+        # Arquitectura general y aplicaciones
+        "Microservices": "How can I design a microservices architecture on AWS?",
+        "Serverless Applications": "What is the best way to build a serverless application on AWS?",
+        "Containerization": "How can I deploy and manage containers using AWS services?",
+        "Hybrid Architecture": "How can I design a hybrid cloud architecture with AWS?",
+        "Event-Driven Architecture": "How do I implement an event-driven architecture using AWS?",
+        "Multi-Region Architecture": "How can I design a multi-region architecture on AWS?",
+        "Edge Computing": "What is the best way to deploy edge computing workloads on AWS?",
+        
+        # Redes y conectividad
+        "Networking": "How can I design a secure and scalable VPC architecture on AWS?",
+        "API Gateway": "How do I build and secure APIs with Amazon API Gateway?",
+        "Load Balancing": "What is the best approach for load balancing in AWS?",
+        
+        # Seguridad y cumplimiento
+        "Security": "How can I implement security best practices on AWS?",
+        "IAM": "How can I design an efficient IAM strategy for AWS resources?",
+        "Compliance": "What are the best practices for achieving compliance on AWS?",
+        
+        # Disponibilidad y recuperación
+        "High Availability": "How can I design highly available applications on AWS?",
+        "Disaster Recovery": "How can I implement a disaster recovery plan on AWS?",
+        
+        # Despliegue y DevOps
+        "CI/CD": "How can I set up a CI/CD pipeline using AWS services?",
+        "Infrastructure as Code": "How can I use IaC tools like AWS CDK or CloudFormation?",
+        "Monitoring": "How can I monitor and optimize application performance on AWS?",
+        
+        # Datos y analítica (manteniendo algunos relevantes)
+        "Data Warehouse": "What is the best way to design a data warehouse on AWS?",
+        "ETL Pipeline": "How can I implement an ETL pipeline using AWS services?",
+        "Streaming Data": "What is the best way to process streaming data on AWS?",
+        
+        # Inteligencia Artificial y Machine Learning
+        "Machine Learning": "How can I build and deploy a machine learning model on AWS?",
+        "AI Services": "How can I integrate AWS AI services into my applications?",
+        
+        # Costos y optimización
+        "Cost Optimization": "How can I optimize cloud costs on AWS?",
+        
+        # Migración
+        "Application Migration": "What is the best approach to migrate applications to AWS?",
+        "Data Migration": "What is the best approach to migrate on-prem data to AWS?"
     }.get(topic, "")
+
 
 
 # Function to compress or resize image if it exceeds 5MB
@@ -205,7 +251,7 @@ else:
         #     st.button('Clear Chat History', on_click=reset_messages)
 
         if "messages" not in st.session_state:
-            st.session_state["messages"] = [{"role": "assistant", "content": "Welcome"}]
+            st.session_state["messages"] = [{"role": "assistant", "content": "Bienvenido"}]
 
         # Display the conversation messages
         for message in st.session_state.messages:
@@ -228,7 +274,7 @@ else:
             st.session_state.messages.append({"role": "user", "content": prompt})
 
             with st.chat_message("assistant"):
-                with st.spinner("Thinking..."):
+                with st.spinner("Pensando..."):
                     response = invoke_bedrock_agent(st.session_state.conversation_id, prompt)
                     event_stream = response['completion']
                     ask_user, agent_answer = read_agent_response(event_stream)
@@ -259,7 +305,7 @@ else:
 
     # Tab for "Generate Solution from Existing Architecture"
     with tabs[1]:
-        st.header("Generate Solution from Existing Architecture")
+        st.header("Genera una solución a partir de una arquitectura existente")
 
         # Custom CSS to style the file uploader button
         st.markdown("""
@@ -283,7 +329,7 @@ else:
         """, unsafe_allow_html=True)
 
         # File uploader and image insights logic
-        uploaded_file = st.file_uploader("Choose an image...", type=["png", "jpg", "jpeg"], on_change=reset_chat)
+        uploaded_file = st.file_uploader("Elige una imagen...", type=["png", "jpg", "jpeg"], on_change=reset_chat)
         if st.session_state.active_tab != "Modify your existing architecture":
             print("inside tab2 active_tab:", st.session_state.active_tab)
             # reset_chat()

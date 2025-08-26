@@ -1,0 +1,2 @@
+AWS_REGION=us-east-1
+AWS_RESOURCE_NAMES_PARAMETER={"CONVERSATION_TABLE_NAME": "devgenius-conversation-table", "FEEDBACK_TABLE_NAME": "devgenius-feedback-table", "SESSION_TABLE_NAME": "devgenius-session-table", "S3_BUCKET_NAME": "devgenius-data-source-538430999815-us-east-1", "BEDROCK_AGENT_ID": "UGAQPMCZ2V", "BEDROCK_AGENT_ALIAS_ID": "CKCRYUK9LN"}

@@ -46,16 +46,31 @@ def generate_dsl(dsl_messages):
 
     if st.session_state.dsl_user_select:
         dsl_prompt = """
-            Generate a software architecture diagram in DSL.
-            Follow these rules:
-            1. Respond only with DSL code in markdown (```dsl).
-            2. Depending on the level of detail, you may define persons, software systems, containers, and/or components, following the C4 model.
-            3. If relevant, you may include cloud services (e.g., AWS, Azure, GCP) as containers or systems, but this is optional and not required.
-            4. Use relationships to clearly show interactions and data flows between elements.
-            5. Ensure the DSL is syntactically correct and can be used directly in a DSL tool.
-            6. Organize the elements cleanly so that the generated diagram is neat and understandable.
-            7. Do not add explanations or extra text outside the DSL block.
-        """  # noqa  
+            Generate a software architecture diagram in Structurizr DSL.
+            Follow these strict rules:
+
+            1. Respond ONLY with valid Structurizr DSL code enclosed in a markdown code block (```dsl).
+            2. The DSL MUST strictly follow the official Structurizr DSL syntax:
+            - Use 'workspace', 'model', 'views', and 'styles' sections when appropriate.
+            - All elements (persons, software systems, containers, components) must be defined inside 'model'.
+            - Relationships must be explicitly declared using '->' with appropriate labels.
+            3. Organize the diagram following the C4 model:
+            - Level 1: Persons and Software Systems.
+            - Level 2: Containers (if relevant).
+            - Level 3: Components (if more detail is requested).
+            4. When including cloud services or external systems (optional), define them as 'Software System' or 'Container' with tags like 'AWS', 'Azure', or 'GCP' if applicable.
+            5. Ensure:
+            - All identifiers (IDs) are unique and syntactically correct (no spaces, use camelCase).
+            - All relationships reference valid defined elements.
+            - The code is COMPLETE and executable without requiring manual fixes.
+            6. Include at least one view (SystemContext or Container) and ensure it references valid model elements.
+            7. Add a 'styles' section with simple styling for readability (e.g., different colors for Person, Software System, Container).
+            8. Do NOT add explanations, comments, or text outside the DSL block.
+            9. Double-check that:
+            - Every relationship references existing elements.
+            - Views do not include undefined elements.
+            - The DSL compiles in Structurizr without errors.
+            """  # noqa  
 
         st.session_state.dsl_messages.append({"role": "user", "content": dsl_prompt})
         dsl_messages.append({"role": "user", "content": dsl_prompt})
