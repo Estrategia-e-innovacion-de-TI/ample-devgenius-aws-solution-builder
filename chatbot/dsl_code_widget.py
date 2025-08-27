@@ -46,8 +46,46 @@ def generate_dsl(dsl_messages):
 
     if st.session_state.dsl_user_select:
         dsl_prompt = """
-            Generate a software architecture diagram in DSL.
-            Follow these rules:
+            Generate a software architecture diagram in DSL by following this step-by-step thinking process:
+
+            Step 1: Analyze the System Scope and Context
+            First, carefully read and understand the system requirements. Ask yourself:
+            - What is the main purpose of this system?
+            - Who are the primary users/actors?
+            - What are the key business processes or workflows?
+            - What is the appropriate C4 model level for this diagram (System Context, Container, Component, or Code)?
+
+            Step 2: Identify Core Elements
+            Based on your analysis, identify and categorize the elements:
+            - Persons: Who interacts with the system? (end users, administrators, external systems acting as users)
+            - Software Systems: What are the main software systems involved? (internal systems, external systems, legacy systems)
+            - Containers: What are the deployable/executable units? (web apps, APIs, databases, message queues, etc.)
+            - Components: What are the major structural building blocks within containers? (controllers, services, repositories, etc.)
+
+            Step 3: Determine Relationships and Data Flow
+            For each element identified, think about:
+            - What does this element interact with?
+            - What type of interaction is it? (uses, sends data to, authenticates with, etc.)
+            - What protocols or technologies are used? (HTTP, HTTPS, SQL, message queues, etc.)
+            - What is the direction of the data flow?
+
+            Step 4: Consider Cloud Services and External Dependencies
+            Evaluate if the system includes:
+            - Cloud services (AWS S3, Azure Functions, Google Cloud Storage, etc.)
+            - Third-party APIs or services
+            - External databases or data sources
+            - Monitoring and logging services
+
+            Step 5: Structure and Organize
+            Plan the layout and organization:
+            - Group related elements logically
+            - Consider hierarchical relationships (systems contain containers, containers contain components)
+            - Think about the visual flow and readability of the diagram
+
+            Step 6: Generate DSL Code
+            Now generate the DSL code following these rules:
+
+            Rules:
             1. Respond only with DSL code in markdown (```dsl).
             2. Depending on the level of detail, you may define persons, software systems, containers, and/or components, following the C4 model.
             3. If relevant, you may include cloud services (e.g., AWS, Azure, GCP) as containers or systems, but this is optional and not required.
@@ -55,6 +93,23 @@ def generate_dsl(dsl_messages):
             5. Ensure the DSL is syntactically correct and can be used directly in a DSL tool.
             6. Organize the elements cleanly so that the generated diagram is neat and understandable.
             7. Do not add explanations or extra text outside the DSL block.
+
+            DSL Syntax Guidelines:
+            - Use clear, descriptive names for all elements
+            - Include technology labels in square brackets where relevant
+            - Use descriptive relationship labels that explain the interaction
+            - Maintain consistent naming conventions (camelCase or snake_case)
+            - Group related elements using proper indentation or grouping syntax
+
+            Example Thinking Process:
+            "I need to create an architecture for an e-commerce system. Let me think:
+            1. Scope: This seems like a Container-level diagram would be appropriate
+            2. Elements: I need a Customer (person), Web App (container), API (container), Database (container), and Payment Service (external system)
+            3. Relationships: Customer uses Web App, Web App calls API, API reads/writes to Database, API integrates with Payment Service
+            4. No specific cloud services mentioned, so I'll keep it generic
+            5. I'll organize them in a logical flow from user to data storage"
+
+            Now apply this thinking process to generate your DSL architecture diagram.
         """  # noqa  
 
         st.session_state.dsl_messages.append({"role": "user", "content": dsl_prompt})
