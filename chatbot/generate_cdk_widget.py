@@ -25,7 +25,7 @@ def generate_cdk(cdk_messages):
 
     with left:
         st.markdown(
-            "<div style='font-size: 18px'><b>Use the checkbox below to generate AWS CDK code as Infrastructure as Code for the proposed solution</b></div>",  # noqa
+            "<div style='font-size: 18px'><b>Usa la casilla de verificación de abajo para generar código AWS CDK como IaaC para la solución propuesta.</b></div>",  # noqa
             unsafe_allow_html=True)
         st.divider()
         st.markdown("<div class=stButton gen-style'>", unsafe_allow_html=True)

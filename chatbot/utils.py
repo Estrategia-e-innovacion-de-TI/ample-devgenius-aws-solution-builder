@@ -16,6 +16,9 @@ import shutil
 from pathlib import Path
 import base64
 
+from dotenv import load_dotenv
+load_dotenv()
+
 AWS_REGION = os.getenv("AWS_REGION")
 config = Config(read_timeout=1000, retries=(dict(max_attempts=5)))
 BEDROCK_MAX_TOKENS = 128000

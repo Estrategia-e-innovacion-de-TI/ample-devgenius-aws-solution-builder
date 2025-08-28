@@ -25,7 +25,7 @@ def generate_dsl(dsl_messages):
 
     with left:
         st.markdown(
-            "<div style='font-size: 18px'><b>Use the checkbox below to generate an architecture diagram in DSL</b></div>",  # noqa
+            "<div style='font-size: 18px'><b>Usa la casilla de verificación de abajo para generar un diagrama de arquitectura en DSL</b></div>",  # noqa
             unsafe_allow_html=True)
         st.divider()
         st.markdown("<div class=stButton gen-style'>", unsafe_allow_html=True)
@@ -45,32 +45,109 @@ def generate_dsl(dsl_messages):
             st.markdown("</div>", unsafe_allow_html=True)
 
     if st.session_state.dsl_user_select:
-        dsl_prompt = """
-            Generate a software architecture diagram in Structurizr DSL.
-            Follow these strict rules:
+        dsl_prompt = """Generate a software architecture diagram in Structurizr DSL code for the given solution by following this step-by-step thinking process:
 
-            1. Respond ONLY with valid Structurizr DSL code enclosed in a markdown code block (```dsl).
-            2. The DSL MUST strictly follow the official Structurizr DSL syntax:
-            - Use 'workspace', 'model', 'views', and 'styles' sections when appropriate.
-            - All elements (persons, software systems, containers, components) must be defined inside 'model'.
-            - Relationships must be explicitly declared using '->' with appropriate labels.
-            3. Organize the diagram following the C4 model:
-            - Level 1: Persons and Software Systems.
-            - Level 2: Containers (if relevant).
-            - Level 3: Components (if more detail is requested).
-            4. When including cloud services or external systems (optional), define them as 'Software System' or 'Container' with tags like 'AWS', 'Azure', or 'GCP' if applicable.
-            5. Ensure:
-            - All identifiers (IDs) are unique and syntactically correct (no spaces, use camelCase).
-            - All relationships reference valid defined elements.
-            - The code is COMPLETE and executable without requiring manual fixes.
-            6. Include at least one view (SystemContext or Container) and ensure it references valid model elements.
-            7. Add a 'styles' section with simple styling for readability (e.g., different colors for Person, Software System, Container).
-            8. Do NOT add explanations, comments, or text outside the DSL block.
-            9. Double-check that:
-            - Every relationship references existing elements.
-            - Views do not include undefined elements.
-            - The DSL compiles in Structurizr without errors.
-            """  # noqa  
+        Step 1: Analyze the System Scope and Context
+        First, carefully read and understand the system requirements. Ask yourself:
+        - What is the main purpose of this system?
+        - Who are the primary users/actors?
+        - What are the key business processes or workflows?
+        - What is the appropriate C4 model level for this diagram (System Context, Container, Component, or Code)?
+
+        Step 2: Identify Core Elements
+        Based on your analysis, identify and categorize the elements:
+        - Persons: Who interacts with the system? (end users, administrators, external systems acting as users)
+        - Software Systems: What are the main software systems involved? (internal systems, external systems, legacy systems)
+        - Containers: What are the deployable/executable units? (web apps, APIs, databases, message queues, etc.)
+        - Components: What are the major structural building blocks within containers? (controllers, services, repositories, etc.)
+
+        Step 3: Determine Relationships and Data Flow
+        For each element identified, think about:
+        - What does this element interact with?
+        - What type of interaction is it? (uses, sends data to, authenticates with, etc.)
+        - What protocols or technologies are used? (HTTP, HTTPS, SQL, message queues, etc.)
+        - What is the direction of the data flow?
+
+        Step 4: Consider Cloud Services and External Dependencies
+        Evaluate if the system includes:
+        - Cloud services (AWS S3, Azure Functions, Google Cloud Storage, etc.)
+        - Third-party APIs or services
+        - External databases or data sources
+        - Monitoring and logging services
+
+        Step 5: Structure and Organize
+        Plan the layout and organization:
+        - Group related elements logically
+        - Consider hierarchical relationships (systems contain containers, containers contain components)
+        - Think about the visual flow and readability of the diagram
+
+        Step 6: Generate DSL Code
+        Now generate the DSL code following these CRITICAL rules:
+
+        CRITICAL RULES FOR VALID DSL:
+        1. Respond only with DSL code in markdown (```dsl).
+        2. Use EXACT variable names consistently throughout - never change a variable name once declared.
+        3. NEVER create relationships between parent and child elements (e.g., a softwareSystem cannot have a relationship with its own containers).
+        4. All relationships must be between elements at the SAME hierarchical level or between different systems/containers.
+        5. Each element must be properly declared before being referenced in relationships.
+        6. Use consistent naming convention (camelCase) for all variable names.
+        7. Always include the workspace, model, and views structure.
+
+        DSL Structure Template:
+        workspace "Workspace Name" {
+        model {
+        // Persons
+        variableName = person "Display Name" "Description"
+            // External Systems
+            externalSystem = softwareSystem "External System Name" "Description" "External"
+            
+            // Main Software System
+            mainSystem = softwareSystem "Main System Name" "Description" {
+                // Containers within the system
+                containerName = container "Container Display Name" "Description" "Technology"
+            }
+            
+            // Relationships - ONLY between different systems/containers, NEVER parent-child
+            variableName -> mainSystem "Relationship description"
+            mainSystem -> externalSystem "Relationship description"
+            // For container relationships, use the container variables directly
+            containerName -> externalSystem "Relationship description"
+        }
+
+        views {
+            systemContext mainSystem {
+                include *
+                autoLayout
+            }
+            
+            container mainSystem {
+                include *
+                autoLayout
+            }
+        }
+        }
+
+        VALIDATION CHECKLIST before generating:
+        - [ ] All variable names are consistent (no typos or variations)
+        - [ ] No relationships between parent systems and their child containers
+        - [ ] All referenced variables are properly declared
+        - [ ] Proper DSL syntax with correct braces and structure
+        - [ ] Technology tags in square brackets where applicable
+
+        COMMON ERRORS TO AVOID:
+        1. ❌ `mainSystem -> containerInsideMainSystem` (parent-child relationship)
+        2. ❌ Using different variable names for the same element
+        3. ❌ Missing variable declarations before relationships
+        4. ❌ Incorrect syntax in container or component definitions
+
+        ✅ CORRECT PATTERNS:
+        1. `person -> softwareSystem`
+        2. `softwareSystem -> externalSystem`
+        3. `container -> container` (when in different systems)
+        4. `container -> externalSystem`
+
+        Now apply this thinking process to generate your Structurizr DSL code, ensuring all rules are followed strictly."""
+   
 
         st.session_state.dsl_messages.append({"role": "user", "content": dsl_prompt})
         dsl_messages.append({"role": "user", "content": dsl_prompt})

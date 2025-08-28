@@ -33,7 +33,7 @@ def generate_cost_estimates(cost_messages):
     with left:
         # st.markdown("**Use the checkbox below to get cost estimates of AWS services in the proposed solution**")
         st.markdown(
-            "<div style='font-size: 18px'><b>Use the checkbox below to get cost estimates of AWS services in the proposed solution</b></div>",  # noqa
+            "<div style='font-size: 18px'><b>Usa la casilla de verificación de abajo para obtener estimaciones de costos de los servicios de AWS</b></div>",  # noqa
             unsafe_allow_html=True)
         st.divider()
         st.markdown("<div class=stButton gen-style'>", unsafe_allow_html=True)

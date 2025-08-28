@@ -138,54 +138,57 @@ def format_for_markdown(response_text):
 
 def get_initial_question(topic):
     return {
-        # Data Lake y Analytics
-        "Data Lake": "How can I build an enterprise data lake on AWS?",
-        "Log Analytics": "How can I build a log analytics solution on AWS?",
-        
-        # Arquitectura general y aplicaciones
-        "Microservices": "How can I design a microservices architecture on AWS?",
-        "Serverless Applications": "What is the best way to build a serverless application on AWS?",
-        "Containerization": "How can I deploy and manage containers using AWS services?",
-        "Hybrid Architecture": "How can I design a hybrid cloud architecture with AWS?",
-        "Event-Driven Architecture": "How do I implement an event-driven architecture using AWS?",
-        "Multi-Region Architecture": "How can I design a multi-region architecture on AWS?",
-        "Edge Computing": "What is the best way to deploy edge computing workloads on AWS?",
-        
-        # Redes y conectividad
-        "Networking": "How can I design a secure and scalable VPC architecture on AWS?",
-        "API Gateway": "How do I build and secure APIs with Amazon API Gateway?",
-        "Load Balancing": "What is the best approach for load balancing in AWS?",
-        
-        # Seguridad y cumplimiento
-        "Security": "How can I implement security best practices on AWS?",
-        "IAM": "How can I design an efficient IAM strategy for AWS resources?",
-        "Compliance": "What are the best practices for achieving compliance on AWS?",
-        
-        # Disponibilidad y recuperación
-        "High Availability": "How can I design highly available applications on AWS?",
-        "Disaster Recovery": "How can I implement a disaster recovery plan on AWS?",
-        
-        # Despliegue y DevOps
-        "CI/CD": "How can I set up a CI/CD pipeline using AWS services?",
-        "Infrastructure as Code": "How can I use IaC tools like AWS CDK or CloudFormation?",
-        "Monitoring": "How can I monitor and optimize application performance on AWS?",
-        
-        # Datos y analítica (manteniendo algunos relevantes)
-        "Data Warehouse": "What is the best way to design a data warehouse on AWS?",
-        "ETL Pipeline": "How can I implement an ETL pipeline using AWS services?",
-        "Streaming Data": "What is the best way to process streaming data on AWS?",
-        
-        # Inteligencia Artificial y Machine Learning
-        "Machine Learning": "How can I build and deploy a machine learning model on AWS?",
-        "AI Services": "How can I integrate AWS AI services into my applications?",
-        
-        # Costos y optimización
-        "Cost Optimization": "How can I optimize cloud costs on AWS?",
-        
-        # Migración
-        "Application Migration": "What is the best approach to migrate applications to AWS?",
-        "Data Migration": "What is the best approach to migrate on-prem data to AWS?"
+    # Data Lake y Analytics
+    "Data Lake": "¿Cómo puedo construir un data lake empresarial en AWS?",
+    "Log Analytics": "¿Cómo puedo construir una solución de análisis de logs en AWS?",
+    
+    # Arquitectura general y aplicaciones
+    "Microservices": "¿Cómo puedo diseñar una arquitectura de microservicios en AWS?",
+    "Serverless Applications": "¿Cuál es la mejor forma de construir una aplicación serverless en AWS?",
+    "Containerization": "¿Cómo puedo desplegar y administrar contenedores usando servicios de AWS?",
+    "Hybrid Architecture": "¿Cómo puedo diseñar una arquitectura híbrida en la nube con AWS?",
+    "Event-Driven Architecture": "¿Cómo implemento una arquitectura orientada a eventos usando AWS?",
+    "Multi-Region Architecture": "¿Cómo puedo diseñar una arquitectura multi-región en AWS?",
+    "Edge Computing": "¿Cuál es la mejor manera de desplegar cargas de trabajo de edge computing en AWS?",
+    
+    # Redes y conectividad
+    "Networking": "¿Cómo puedo diseñar una arquitectura VPC segura y escalable en AWS?",
+    "API Gateway": "¿Cómo puedo construir y asegurar APIs con Amazon API Gateway?",
+    "Load Balancing": "¿Cuál es el mejor enfoque para balanceo de carga en AWS?",
+    
+    # Seguridad y cumplimiento
+    "Security": "¿Cómo puedo implementar buenas prácticas de seguridad en AWS?",
+    "IAM": "¿Cómo puedo diseñar una estrategia eficiente de IAM para los recursos de AWS?",
+    "Compliance": "¿Cuáles son las mejores prácticas para lograr cumplimiento normativo en AWS?",
+    
+    # Disponibilidad y recuperación
+    "High Availability": "¿Cómo puedo diseñar aplicaciones altamente disponibles en AWS?",
+    "Disaster Recovery": "¿Cómo puedo implementar un plan de recuperación ante desastres en AWS?",
+    
+    # Despliegue y DevOps
+    "CI/CD": "¿Cómo puedo configurar un pipeline de CI/CD usando servicios de AWS?",
+    "Infrastructure as Code": "¿Cómo puedo usar herramientas de IaC como AWS CDK o CloudFormation?",
+    "Monitoring": "¿Cómo puedo monitorear y optimizar el rendimiento de aplicaciones en AWS?",
+    
+    # Datos y analítica
+    "Data Warehouse": "¿Cuál es la mejor manera de diseñar un data warehouse en AWS?",
+    "ETL Pipeline": "¿Cómo puedo implementar un pipeline ETL usando servicios de AWS?",
+    "Streaming Data": "¿Cuál es la mejor manera de procesar datos en streaming en AWS?",
+    
+    # Inteligencia Artificial y Machine Learning
+    "Machine Learning": "¿Cómo puedo construir y desplegar un modelo de machine learning en AWS?",
+    "AI Services": "¿Cómo puedo integrar servicios de IA de AWS en mis aplicaciones?",
+    
+    # Costos y optimización
+    "Cost Optimization": "¿Cómo puedo optimizar los costos en la nube con AWS?",
+    
+    # Migración
+    "Application Migration": "¿Cuál es la mejor estrategia para migrar aplicaciones a AWS?",
+    "Data Migration": "¿Cuál es la mejor estrategia para migrar datos on-premises a AWS?",
+
+    "Debug": "Crea una arquitectura dummie. Define todos los requisitos, propiedades y características por ti mismo de la arquitectura. No me hagas preguntas. Solo quiero probar funcionalidades de la APP."
     }.get(topic, "")
+
 
 
 
@@ -244,11 +247,11 @@ else:
             print("inside tab1 active_tab:", st.session_state.active_tab)
             st.session_state.active_tab = "Build a solution"
 
-        # col1, col2, _, _, right = st.columns(5)
-        # with col1:
-        #     topic = st.selectbox("Select the feature to proceed", ["","Data Lake", "Log Analytics"], key="topic_selector", on_change=reset_messages)  # noqa
-        # with right:
-        #     st.button('Clear Chat History', on_click=reset_messages)
+        col1, col2, _, _, right = st.columns(5)
+        with col1:
+            topic = st.selectbox("Selecciona un ejemplo", ["","Data Lake", "Log Analytics", "Security", "Monitoring", "Debug"], key="topic_selector", on_change=reset_messages)  # noqa
+        with right:
+            st.button('Clear Chat History', on_click=reset_messages)
 
         if "messages" not in st.session_state:
             st.session_state["messages"] = [{"role": "assistant", "content": "Bienvenido"}]

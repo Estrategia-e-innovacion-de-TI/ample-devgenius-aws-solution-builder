@@ -37,7 +37,7 @@ def generate_cfn(cfn_messages):
 
     with left:
         st.markdown(
-            "<div style='font-size: 18px'><b>Use the checkbox below to generate AWS CloudFormation Template code to deploy the proposed solution as Infrastructure as Code</b></div>",  # noqa
+            "<div style='font-size: 18px'><b>Usa la casilla de verificación de abajo para generar código de plantilla de AWS CloudFormation que despliegue la solución propuesta como IaaC.</b></div>",  # noqa
             unsafe_allow_html=True)
         st.divider()
         st.markdown("<div class=stButton gen-style'>", unsafe_allow_html=True)
