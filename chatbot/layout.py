@@ -78,7 +78,7 @@ def login_page():
     - Esta herramienta está pensada para asistir en el diseño de arquitecturas, pero no reemplaza una planificación ni pruebas adecuadas.
 
     Al utilizar DevGenius, reconoces que has leído, comprendido y aceptado este descargo de responsabilidad.
-    """)  # noqa
+    """)  
 
     # Optional: Add styling for better visual hierarchy
     st.markdown("""
