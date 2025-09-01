@@ -67,10 +67,10 @@ def display_image(image, width=600, caption="Uploaded Image", use_center=True):
 
 # Function to interact with the Bedrock model using an image and query
 def get_image_insights(image_data, query="Explain in detail the architecture flow"):
-    query = ('''Explain in detail the architecture flow.
-             If the given image is not related to technical architecture, then please request the user to upload an AWS architecture or hand drawn architecture.
-             When generating the solution , highlight the AWS service names in bold
-             ''')  # noqa
+    query = ('''Explica en detalle el flujo de la arquitectura.
+                Si la imagen proporcionada no está relacionada con la arquitectura técnica, solicita al usuario que suba un diagrama de arquitectura de **AWS** o un diagrama dibujado a mano.
+                Al generar la solución, resalta los nombres de los servicios de AWS en **negrita**.
+                ''') 
     messages = [{
         "role": "user",
         "content": [

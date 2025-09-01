@@ -45,72 +45,73 @@ def generate_dsl(dsl_messages):
             st.markdown("</div>", unsafe_allow_html=True)
 
     if st.session_state.dsl_user_select:
-        dsl_prompt = """Generate a software architecture diagram in Structurizr DSL code for the given solution by following this step-by-step thinking process:
+        dsl_prompt = """Genera un diagrama de arquitectura de software en código Structurizr DSL para la solución dada siguiendo este proceso de razonamiento paso a paso:
 
-        Step 1: Analyze the System Scope and Context
-        First, carefully read and understand the system requirements. Ask yourself:
-        - What is the main purpose of this system?
-        - Who are the primary users/actors?
-        - What are the key business processes or workflows?
-        - What is the appropriate C4 model level for this diagram (System Context, Container, Component, or Code)?
+        Paso 1: Analiza el alcance y el contexto del sistema
+        Primero, lee y comprende cuidadosamente los requisitos del sistema. Pregúntate:
+        - ¿Cuál es el propósito principal de este sistema?
+        - ¿Quiénes son los usuarios/actores principales?
+        - ¿Cuáles son los procesos o flujos de trabajo clave del negocio?
+        - ¿Cuál es el nivel del modelo C4 apropiado para este diagrama (System Context, Container, Component o Code)?
 
-        Step 2: Identify Core Elements
-        Based on your analysis, identify and categorize the elements:
-        - Persons: Who interacts with the system? (end users, administrators, external systems acting as users)
-        - Software Systems: What are the main software systems involved? (internal systems, external systems, legacy systems)
-        - Containers: What are the deployable/executable units? (web apps, APIs, databases, message queues, etc.)
-        - Components: What are the major structural building blocks within containers? (controllers, services, repositories, etc.)
+        Paso 2: Identifica los elementos centrales
+        Con base en tu análisis, identifica y clasifica los elementos:
+        - Personas: ¿Quién interactúa con el sistema? (usuarios finales, administradores, sistemas externos que actúan como usuarios)
+        - Sistemas de software: ¿Cuáles son los principales sistemas de software involucrados? (sistemas internos, externos, legados)
+        - Contenedores: ¿Cuáles son las unidades desplegables/ejecutables? (aplicaciones web, APIs, bases de datos, colas de mensajes, etc.)
+        - Componentes: ¿Cuáles son los principales bloques estructurales dentro de los contenedores? (controladores, servicios, repositorios, etc.)
 
-        Step 3: Determine Relationships and Data Flow
-        For each element identified, think about:
-        - What does this element interact with?
-        - What type of interaction is it? (uses, sends data to, authenticates with, etc.)
-        - What protocols or technologies are used? (HTTP, HTTPS, SQL, message queues, etc.)
-        - What is the direction of the data flow?
+        Paso 3: Determina relaciones y flujo de datos
+        Para cada elemento identificado, piensa en:
+        - ¿Con qué interactúa este elemento?
+        - ¿Qué tipo de interacción es? (usa, envía datos a, se autentica con, etc.)
+        - ¿Qué protocolos o tecnologías se usan? (HTTP, HTTPS, SQL, colas de mensajes, etc.)
+        - ¿Cuál es la dirección del flujo de datos?
 
-        Step 4: Consider Cloud Services and External Dependencies
-        Evaluate if the system includes:
-        - Cloud services (AWS S3, Azure Functions, Google Cloud Storage, etc.)
-        - Third-party APIs or services
-        - External databases or data sources
-        - Monitoring and logging services
+        Paso 4: Considera servicios en la nube y dependencias externas
+        Evalúa si el sistema incluye:
+        - Servicios en la nube (AWS S3, Azure Functions, Google Cloud Storage, etc.)
+        - APIs o servicios de terceros
+        - Bases de datos o fuentes de datos externas
+        - Servicios de monitoreo y registro (logging)
 
-        Step 5: Structure and Organize
-        Plan the layout and organization:
-        - Group related elements logically
-        - Consider hierarchical relationships (systems contain containers, containers contain components)
-        - Think about the visual flow and readability of the diagram
+        Paso 5: Estructura y organiza
+        Planifica la disposición y organización:
+        - Agrupa lógicamente los elementos relacionados
+        - Considera las relaciones jerárquicas (los sistemas contienen contenedores, los contenedores contienen componentes)
+        - Piensa en el flujo visual y la legibilidad del diagrama
 
-        Step 6: Generate DSL Code
-        Now generate the DSL code following these CRITICAL rules:
+        Paso 6: Genera el código DSL
+        Ahora genera el código DSL siguiendo estas REGLAS CRÍTICAS:
 
-        CRITICAL RULES FOR VALID DSL:
-        1. Respond only with DSL code in markdown (```dsl).
-        2. Use EXACT variable names consistently throughout - never change a variable name once declared.
-        3. NEVER create relationships between parent and child elements (e.g., a softwareSystem cannot have a relationship with its own containers).
-        4. All relationships must be between elements at the SAME hierarchical level or between different systems/containers.
-        5. Each element must be properly declared before being referenced in relationships.
-        6. Use consistent naming convention (camelCase) for all variable names.
-        7. Always include the workspace, model, and views structure.
+        REGLAS CRÍTICAS PARA UN DSL VÁLIDO:
+        1. Responde solo con código DSL en markdown (```dsl).
+        2. Usa EXACTAMENTE los mismos nombres de variables de forma consistente en todo el código; nunca cambies un nombre de variable una vez declarado.
+        3. NUNCA crees relaciones entre elementos padre e hijo (por ejemplo, un softwareSystem no puede tener una relación con sus propios contenedores).
+        4. Todas las relaciones deben ser entre elementos del MISMO nivel jerárquico o entre diferentes sistemas/contenedores.
+        5. Cada elemento debe estar debidamente declarado antes de ser referenciado en relaciones.
+        6. Usa una convención de nombres consistente (camelCase) para todas las variables.
+        7. Incluye siempre la estructura de workspace, model y views.
 
-        DSL Structure Template:
+        Plantilla de estructura DSL:
+        <example>
         workspace "Workspace Name" {
         model {
-        // Persons
+        // Personas
         variableName = person "Display Name" "Description"
-            // External Systems
+            // Sistemas externos
             externalSystem = softwareSystem "External System Name" "Description" "External"
             
-            // Main Software System
+            // Sistema de software principal
             mainSystem = softwareSystem "Main System Name" "Description" {
-                // Containers within the system
+                // Contenedores dentro del sistema
                 containerName = container "Container Display Name" "Description" "Technology"
             }
             
-            // Relationships - ONLY between different systems/containers, NEVER parent-child
+            // Relaciones: SOLO entre sistemas/contenedores diferentes; NUNCA padre-hijo
             variableName -> mainSystem "Relationship description"
             mainSystem -> externalSystem "Relationship description"
-            // For container relationships, use the container variables directly
+            // Para relaciones entre contenedores, usa directamente las variables de contenedor
             containerName -> externalSystem "Relationship description"
         }
 
@@ -126,28 +127,28 @@ def generate_dsl(dsl_messages):
             }
         }
         }
+        </example>
 
-        VALIDATION CHECKLIST before generating:
-        - [ ] All variable names are consistent (no typos or variations)
-        - [ ] No relationships between parent systems and their child containers
-        - [ ] All referenced variables are properly declared
-        - [ ] Proper DSL syntax with correct braces and structure
-        - [ ] Technology tags in square brackets where applicable
+        LISTA DE VERIFICACIÓN antes de generar:
+        - [ ] Todos los nombres de variables son consistentes (sin errores tipográficos o variaciones)
+        - [ ] No hay relaciones entre sistemas padre y sus contenedores hijos
+        - [ ] Todas las variables referenciadas están correctamente declaradas
+        - [ ] Sintaxis DSL correcta con llaves y estructura adecuadas
+        - [ ] Etiquetas de tecnología entre corchetes cuando sea aplicable
 
-        COMMON ERRORS TO AVOID:
-        1. ❌ `mainSystem -> containerInsideMainSystem` (parent-child relationship)
-        2. ❌ Using different variable names for the same element
-        3. ❌ Missing variable declarations before relationships
-        4. ❌ Incorrect syntax in container or component definitions
+        ERRORES COMUNES A EVITAR:
+        1. ❌ `mainSystem -> containerInsideMainSystem` (relación padre-hijo)
+        2. ❌ Usar nombres de variables diferentes para el mismo elemento
+        3. ❌ Falta de declaraciones antes de usar variables en relaciones
+        4. ❌ Sintaxis incorrecta en definiciones de contenedor o componente
 
-        ✅ CORRECT PATTERNS:
+        ✅ PATRONES CORRECTOS:
         1. `person -> softwareSystem`
         2. `softwareSystem -> externalSystem`
-        3. `container -> container` (when in different systems)
+        3. `container -> container` (cuando están en sistemas diferentes)
         4. `container -> externalSystem`
 
-        Now apply this thinking process to generate your Structurizr DSL code, ensuring all rules are followed strictly."""
-   
+        Ahora aplica este proceso de razonamiento para generar tu código en Structurizr DSL, asegurando que se sigan estrictamente todas las reglas."""   
 
         st.session_state.dsl_messages.append({"role": "user", "content": dsl_prompt})
         dsl_messages.append({"role": "user", "content": dsl_prompt})
