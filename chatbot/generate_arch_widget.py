@@ -27,7 +27,7 @@ def generate_arch(arch_messages):
 
     with left:
         st.markdown(
-            "<div style='font-size: 18px'><b>Use the checkbox below to generate a visual representation of the proposed solution</b></div>",  # noqa
+            "<div style='font-size: 18px'><b>Usa la casilla de verificación de abajo para generar una representación visual de la solución propuesta.</b></div>",  # noqa
             unsafe_allow_html=True)
         st.divider()
         st.markdown("<div class=stButton gen-style'>", unsafe_allow_html=True)
@@ -49,18 +49,19 @@ def generate_arch(arch_messages):
 
     if st.session_state.arch_user_select:
         architecture_prompt = """
-            Generate an AWS architecture and data flow diagram for the given solution, applying AWS best practices. Follow these steps:
-            1. Create an XML file suitable for draw.io that captures the architecture and data flow.
-            2. Reference the latest AWS architecture icons here: https://aws.amazon.com/architecture/icons/, Always use the latest AWS icons for generating the architecture.
-            3. Respond only with the XML in markdown format—no additional text.
-            4. Ensure the XML is complete, with all elements having proper opening and closing tags.
-            5. Confirm that all AWS services/icons are properly connected and enclosed within an AWS Cloud icon, deployed inside a VPC where applicable.
-            6. Remove unnecessary whitespace to optimize size and minimize output tokens.
-            7. Use valid AWS architecture icons to represent services, avoiding random images.
-            8. Please ensure the architecture diagram is clearly defined, neatly organized, and highly readable. The flow should be visually clean, with all arrows properly connected without overlaps. Make sure AWS service icons are neatly aligned and not clashing with arrows or other elements. If non-AWS services like on-premises databases, servers, or external systems are included, use appropriate generic icons from draw.io to represent them. The final diagram should look polished, professional, and easy to understand at a glance.
-            9. Please create a clearly structured and highly readable architecture diagram. Arrange all AWS service icons and non-AWS components (use generic draw.io icons for on-premises servers, databases, etc.) in a way that is clean, visually aligned, and properly spaced. Ensure arrows are straight, not overlapped or tangled, and clearly indicate the flow without crossing over service icons. Maintain enough spacing between elements to avoid clutter. The overall diagram should look professional, polished, and the data flow must be immediately understandable at a glance.
-            10. The final XML should be syntactically correct and cover all components of the given solution.
-        """  # noqa
+        Genera un diagrama de arquitectura y flujo de datos en AWS para la solución dada, aplicando las buenas prácticas de AWS. Sigue estos pasos:
+        1. Crea un archivo XML adecuado para draw.io que capture la arquitectura y el flujo de datos.
+        2. Haz referencia a los íconos de arquitectura más recientes de AWS aquí: https://aws.amazon.com/architecture/icons/. Usa SIEMPRE los íconos de AWS más recientes para generar la arquitectura.
+        3. Responde únicamente con el XML en formato markdown—sin texto adicional.
+        4. Asegura que el XML esté completo, con todas las etiquetas de apertura y cierre correctamente formadas.
+        5. Confirma que todos los servicios/íconos de AWS estén correctamente conectados y que estén contenidos dentro de un ícono de AWS Cloud, desplegados dentro de una VPC cuando corresponda.
+        6. Elimina espacios en blanco innecesarios para optimizar el tamaño y minimizar los tokens de salida.
+        7. Usa íconos válidos de arquitectura de AWS para representar los servicios; evita imágenes aleatorias.
+        8. Asegúrate de que el diagrama de arquitectura esté claramente definido, ordenado y muy legible. El flujo debe ser visualmente limpio, con todas las flechas correctamente conectadas sin superposiciones. Asegúrate de que los íconos de servicios de AWS estén alineados sin chocar con flechas u otros elementos. Si se incluyen servicios no-AWS como bases de datos on-premise, servidores o sistemas externos, utiliza íconos genéricos apropiados de draw.io para representarlos. El diagrama final debe lucir pulido, profesional y fácil de entender de un vistazo.
+        9. Crea un diagrama de arquitectura claramente estructurado y de alta legibilidad. Organiza todos los íconos de servicios AWS y los componentes no-AWS (usa íconos genéricos de draw.io para servidores on-premise, bases de datos, etc.) de forma limpia, visualmente alineada y con espaciado adecuado. Asegura que las flechas sean rectas, no se solapen ni se enreden, y que indiquen el flujo sin cruzar los íconos de servicio. Mantén suficiente separación entre los elementos para evitar saturación. El diagrama en conjunto debe verse profesional, pulido, y el flujo de datos debe ser inmediatamente comprensible.
+        10. El XML final debe ser sintácticamente correcto y cubrir todos los componentes de la solución dada.
+        """
+ 
 
         st.session_state.arch_messages.append({"role": "user", "content": architecture_prompt})
         arch_messages.append({"role": "user", "content": architecture_prompt})

@@ -67,10 +67,10 @@ def display_image(image, width=600, caption="Uploaded Image", use_center=True):
 
 # Function to interact with the Bedrock model using an image and query
 def get_image_insights(image_data, query="Explain in detail the architecture flow"):
-    query = ('''Explain in detail the architecture flow.
-             If the given image is not related to technical architecture, then please request the user to upload an AWS architecture or hand drawn architecture.
-             When generating the solution , highlight the AWS service names in bold
-             ''')  # noqa
+    query = ('''Explica en detalle el flujo de la arquitectura.
+                Si la imagen proporcionada no está relacionada con la arquitectura técnica, solicita al usuario que suba un diagrama de arquitectura de **AWS** o un diagrama dibujado a mano.
+                Al generar la solución, resalta los nombres de los servicios de AWS en **negrita**.
+                ''') 
     messages = [{
         "role": "user",
         "content": [
@@ -82,7 +82,7 @@ def get_image_insights(image_data, query="Explain in detail the architecture flo
         streaming_response = bedrock_client.converse_stream(
             modelId=BEDROCK_MODEL_ID,
             messages=messages,
-            inferenceConfig={"maxTokens": 2000, "temperature": 0.1, "topP": 0.9}
+            inferenceConfig={"maxTokens": 2000, "temperature": 0.0, "topP": 0.9}
         )
 
         full_response = ""
@@ -121,7 +121,7 @@ def reset_messages():
     # st.session_state['conversation_id'] = str(uuid.uuid4())
 
     initial_question = get_initial_question(st.session_state.topic_selector)
-    st.session_state.messages = [{"role": "assistant", "content": "Welcome to DevGenius — turning ideas into reality. Together, we’ll design your architecture and solution, with each conversation shaping your vision. Let’s get started on building!"}]
+    st.session_state.messages = [{"role": "assistant", "content": "Bienvenido a DevGenius: convirtiendo ideas en realidad. Juntos diseñaremos tu arquitectura y solución, con cada conversación dando forma a tu visión. ¡Comencemos a construir!"}]
 
     if initial_question:
         st.session_state.messages.append({"role": "user", "content": initial_question})
@@ -138,9 +138,58 @@ def format_for_markdown(response_text):
 
 def get_initial_question(topic):
     return {
-        "Data Lake": "How can I build an enterprise data lake on AWS?",
-        "Log Analytics": "How can I build a log analytics solution on AWS?"
+    # Data Lake y Analytics
+    "Data Lake": "¿Cómo puedo construir un data lake empresarial en AWS?",
+    "Log Analytics": "¿Cómo puedo construir una solución de análisis de logs en AWS?",
+    
+    # Arquitectura general y aplicaciones
+    "Microservices": "¿Cómo puedo diseñar una arquitectura de microservicios en AWS?",
+    "Serverless Applications": "¿Cuál es la mejor forma de construir una aplicación serverless en AWS?",
+    "Containerization": "¿Cómo puedo desplegar y administrar contenedores usando servicios de AWS?",
+    "Hybrid Architecture": "¿Cómo puedo diseñar una arquitectura híbrida en la nube con AWS?",
+    "Event-Driven Architecture": "¿Cómo implemento una arquitectura orientada a eventos usando AWS?",
+    "Multi-Region Architecture": "¿Cómo puedo diseñar una arquitectura multi-región en AWS?",
+    "Edge Computing": "¿Cuál es la mejor manera de desplegar cargas de trabajo de edge computing en AWS?",
+    
+    # Redes y conectividad
+    "Networking": "¿Cómo puedo diseñar una arquitectura VPC segura y escalable en AWS?",
+    "API Gateway": "¿Cómo puedo construir y asegurar APIs con Amazon API Gateway?",
+    "Load Balancing": "¿Cuál es el mejor enfoque para balanceo de carga en AWS?",
+    
+    # Seguridad y cumplimiento
+    "Security": "¿Cómo puedo implementar buenas prácticas de seguridad en AWS?",
+    "IAM": "¿Cómo puedo diseñar una estrategia eficiente de IAM para los recursos de AWS?",
+    "Compliance": "¿Cuáles son las mejores prácticas para lograr cumplimiento normativo en AWS?",
+    
+    # Disponibilidad y recuperación
+    "High Availability": "¿Cómo puedo diseñar aplicaciones altamente disponibles en AWS?",
+    "Disaster Recovery": "¿Cómo puedo implementar un plan de recuperación ante desastres en AWS?",
+    
+    # Despliegue y DevOps
+    "CI/CD": "¿Cómo puedo configurar un pipeline de CI/CD usando servicios de AWS?",
+    "Infrastructure as Code": "¿Cómo puedo usar herramientas de IaC como AWS CDK o CloudFormation?",
+    "Monitoring": "¿Cómo puedo monitorear y optimizar el rendimiento de aplicaciones en AWS?",
+    
+    # Datos y analítica
+    "Data Warehouse": "¿Cuál es la mejor manera de diseñar un data warehouse en AWS?",
+    "ETL Pipeline": "¿Cómo puedo implementar un pipeline ETL usando servicios de AWS?",
+    "Streaming Data": "¿Cuál es la mejor manera de procesar datos en streaming en AWS?",
+    
+    # Inteligencia Artificial y Machine Learning
+    "Machine Learning": "¿Cómo puedo construir y desplegar un modelo de machine learning en AWS?",
+    "AI Services": "¿Cómo puedo integrar servicios de IA de AWS en mis aplicaciones?",
+    
+    # Costos y optimización
+    "Cost Optimization": "¿Cómo puedo optimizar los costos en la nube con AWS?",
+    
+    # Migración
+    "Application Migration": "¿Cuál es la mejor estrategia para migrar aplicaciones a AWS?",
+    "Data Migration": "¿Cuál es la mejor estrategia para migrar datos on-premises a AWS?",
+
+    "Debug": "Crea una arquitectura dummie. Define todos los requisitos, propiedades y características por ti mismo de la arquitectura. No me hagas preguntas. Solo quiero probar funcionalidades de la APP."
     }.get(topic, "")
+
+
 
 
 # Function to compress or resize image if it exceeds 5MB
@@ -198,14 +247,14 @@ else:
             print("inside tab1 active_tab:", st.session_state.active_tab)
             st.session_state.active_tab = "Build a solution"
 
-        # col1, col2, _, _, right = st.columns(5)
-        # with col1:
-        #     topic = st.selectbox("Select the feature to proceed", ["","Data Lake", "Log Analytics"], key="topic_selector", on_change=reset_messages)  # noqa
-        # with right:
-        #     st.button('Clear Chat History', on_click=reset_messages)
+        col1, col2, _, _, right = st.columns(5)
+        with col1:
+            topic = st.selectbox("Selecciona un ejemplo", ["","Data Lake", "Log Analytics", "Security", "Monitoring", "Debug"], key="topic_selector", on_change=reset_messages)  # noqa
+        with right:
+            st.button('Clear Chat History', on_click=reset_messages)
 
         if "messages" not in st.session_state:
-            st.session_state["messages"] = [{"role": "assistant", "content": "Welcome"}]
+            st.session_state["messages"] = [{"role": "assistant", "content": "Bienvenido"}]
 
         # Display the conversation messages
         for message in st.session_state.messages:
@@ -228,7 +277,7 @@ else:
             st.session_state.messages.append({"role": "user", "content": prompt})
 
             with st.chat_message("assistant"):
-                with st.spinner("Thinking..."):
+                with st.spinner("Pensando..."):
                     response = invoke_bedrock_agent(st.session_state.conversation_id, prompt)
                     event_stream = response['completion']
                     ask_user, agent_answer = read_agent_response(event_stream)
@@ -259,7 +308,7 @@ else:
 
     # Tab for "Generate Solution from Existing Architecture"
     with tabs[1]:
-        st.header("Generate Solution from Existing Architecture")
+        st.header("Genera una solución a partir de una arquitectura existente")
 
         # Custom CSS to style the file uploader button
         st.markdown("""
@@ -283,7 +332,7 @@ else:
         """, unsafe_allow_html=True)
 
         # File uploader and image insights logic
-        uploaded_file = st.file_uploader("Choose an image...", type=["png", "jpg", "jpeg"], on_change=reset_chat)
+        uploaded_file = st.file_uploader("Elige una imagen...", type=["png", "jpg", "jpeg"], on_change=reset_chat)
         if st.session_state.active_tab != "Modify your existing architecture":
             print("inside tab2 active_tab:", st.session_state.active_tab)
             # reset_chat()

@@ -25,7 +25,7 @@ def generate_cdk(cdk_messages):
 
     with left:
         st.markdown(
-            "<div style='font-size: 18px'><b>Use the checkbox below to generate AWS CDK code as Infrastructure as Code for the proposed solution</b></div>",  # noqa
+            "<div style='font-size: 18px'><b>Usa la casilla de verificación de abajo para generar código AWS CDK como IaaC para la solución propuesta.</b></div>",  # noqa
             unsafe_allow_html=True)
         st.divider()
         st.markdown("<div class=stButton gen-style'>", unsafe_allow_html=True)
@@ -48,12 +48,13 @@ def generate_cdk(cdk_messages):
 
     if st.session_state.cdk_user_select:
         cdk_prompt1 = """
-            For the given solution, generate a CDK script in TypeScript to automate and deploy the required AWS resources.
-            Provide the actual source code for all jobs wherever applicable. 
-            The CDK code should provision all resources and components without version restrictions. 
-            If Python code is needed, generate a "Hello, World!" code example.
-            At the end generate sample commands to deploy the CDK code.
-        """  # noqa
+        Para la solución dada, genera un script de CDK en TypeScript para automatizar y desplegar los recursos necesarios de AWS.
+        Proporciona el código fuente real para todos los trabajos cuando corresponda.
+        El código CDK debe aprovisionar todos los recursos y componentes sin restricciones de versión.
+        Si se necesita código en Python, genera un ejemplo "Hello, World!".
+        Al final, genera comandos de ejemplo para desplegar el código CDK.
+        """
+
 
         # Append the prompt to the session state and messages
         st.session_state.cdk_messages.append({"role": "user", "content": cdk_prompt1})

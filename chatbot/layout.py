@@ -11,7 +11,8 @@ def login_page():
         logo_col, _ = st.columns([30, 1])
 
         with logo_col:
-            st.title("🧠 DevGenius ARQ")
+            st.image("chatbot/images/LogoBancolombia.png", width=80)
+            st.title("DevGenius ARQ")
             st.title("Confirmar")
 
             acknowledged = st.checkbox(
@@ -97,9 +98,9 @@ def welcome_sidebar():
     logo_col, _ = st.columns([3, 1])
 
     with logo_col:
-        # st.image("images/DevGenius.JPG", width=150)
+        st.image("chatbot/images/LogoBancolombia.png", width=80)
         st.title("DevGenius ARQ")
-    # Add a horizontal line for visual separation
+
         st.divider()
         # Add custom CSS for button styling and text handling
         st.markdown("""
@@ -158,10 +159,10 @@ def create_tabs():
 def create_option_tabs():
     """Create and return the Streamlit tabs for the various options supported by DevGenius."""
     tabs = st.tabs([
-    "Estimación de costos", 
-    "Diagrama de arquitectura", 
-    "CDK code", 
-    "CloudFormation code", 
-    "Documentación técnica",
-    "Código DSL"])  # noqa
+    "Costos", 
+    "Diagrama AWS", 
+    "CDK", 
+    "Cloudformation", 
+    "Documentación",
+    "DSL"])  # noqa
     return tabs

@@ -25,7 +25,7 @@ def generate_doc(doc_messages):
 
     with left:
         st.markdown(
-            "<div style='font-size: 18px'><b>Use the checkbox below to generate generate technical documentation for the proposed solution</b></div>",  # noqa
+            "<div style='font-size: 18px'><b>Usa la casilla de verificación de abajo para generar documentación técnica de la solución propuesta.</b></div>",  # noqa
             unsafe_allow_html=True)
         st.divider()
         st.markdown("<div class=stButton gen-style'>", unsafe_allow_html=True)
@@ -47,9 +47,9 @@ def generate_doc(doc_messages):
 
     if st.session_state.doc_user_select:
         doc_prompt = """
-            For the given solution, generate a complete, professional technical documentation including a table of contents, 
-            for the following architecture. Expand all the table of contents topics to create a comprehensive professional technical documentation
-        """  # noqa
+        Para la solución dada, genera una documentación técnica completa y profesional que incluya una tabla de contenidos,
+        para la siguiente arquitectura. Expande todos los temas de la tabla de contenidos para crear una documentación técnica profesional integral.
+        """ 
 
         st.session_state.doc_messages.append({"role": "user", "content": doc_prompt})
         doc_messages.append({"role": "user", "content": doc_prompt})

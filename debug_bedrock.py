@@ -95,7 +95,7 @@ def analyze_aws_identity():
         
         # Test 2: Get specific model
         try:
-            model = bedrock.get_foundation_model(modelIdentifier='anthropic.claude-3-5-sonnet-20240620-v1:0')
+            model = bedrock.get_foundation_model(modelIdentifier='anthropic.claude-3-5-sonnet-20241022-v2:0')
             print(f"   ✅ get_foundation_model: OK")
         except ClientError as e:
             print(f"   ❌ get_foundation_model: {e.response['Error']['Code']}")

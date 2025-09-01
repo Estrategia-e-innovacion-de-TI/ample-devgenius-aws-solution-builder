@@ -37,7 +37,7 @@ def generate_cfn(cfn_messages):
 
     with left:
         st.markdown(
-            "<div style='font-size: 18px'><b>Use the checkbox below to generate AWS CloudFormation Template code to deploy the proposed solution as Infrastructure as Code</b></div>",  # noqa
+            "<div style='font-size: 18px'><b>Usa la casilla de verificación de abajo para generar código de plantilla de AWS CloudFormation que despliegue la solución propuesta como IaaC.</b></div>",  # noqa
             unsafe_allow_html=True)
         st.divider()
         st.markdown("<div class=stButton gen-style'>", unsafe_allow_html=True)
@@ -59,12 +59,12 @@ def generate_cfn(cfn_messages):
 
     if st.session_state.cfn_user_select:
         cfn_prompt = """
-            For the given solution, generate a CloudFormation template in YAML to automate the deployment of AWS resources.
-            Provide the actual source code for all the jobs wherever applicable.
-            The CloudFormation template should provision all the resources and the components.
-            If Python code is needed, generate a "Hello, World!" code example.
-            At the end generate sample commands to deploy the CloudFormation template.
-        """  # noqa
+        Para la solución dada, genera una plantilla de CloudFormation en YAML para automatizar el despliegue de recursos de AWS.
+        Proporciona el código fuente real para todos los jobs cuando corresponda.
+        La plantilla de CloudFormation debe aprovisionar todos los recursos y componentes.
+        Si se necesita código en Python, genera un ejemplo "Hello, World!".
+        Al final, genera comandos de ejemplo para desplegar la plantilla de CloudFormation.
+        """ 
 
         cfn_messages.append({"role": "user", "content": cfn_prompt})
 
