@@ -15,6 +15,8 @@ import zipfile
 import shutil
 from pathlib import Path
 import base64
+import zlib
+import requests
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -368,3 +370,417 @@ def enable_artifacts_download():
                 f'<a href="{href}" download="conversation_artifacts.zip" style="color:#0066cc;text-decoration:underline;">Click here to download the artifacts</a>', 
                 unsafe_allow_html=True
             )
+
+# Convert Structurizr DSL to diagram using Kroki API
+def structurizr_to_diagram(dsl_code: str, format: str = 'svg') -> bytes:
+    """
+    Convierte código Structurizr DSL a diagrama usando la API de Kroki
+    
+    Args:
+        dsl_code: Código en Structurizr DSL como string
+        format: Formato de salida ('svg', 'png', 'pdf', 'jpeg')
+    
+    Returns:
+        Contenido del diagrama en bytes
+        
+    Raises:
+        Exception: Si hay error en la conversión
+    """
+    try:
+        # 1. Comprimir y codificar el código DSL
+        compressed = zlib.compress(dsl_code.encode('utf-8'), level=9)
+        encoded = base64.urlsafe_b64encode(compressed).decode('utf-8')
+        
+        # 2. Construir URL de la API de Kroki
+        url = f"https://kroki.io/structurizr/{format}/{encoded}"
+        
+        # 3. Hacer petición y devolver contenido
+        response = requests.get(url, timeout=30)
+        response.raise_for_status()
+        
+        return response.content
+        
+    except Exception as e:
+        raise Exception(f"Error convirtiendo DSL a diagrama: {str(e)}")
+    
+def structurizr_to_file(dsl_code: str, output_file: str, format: str = 'svg'):
+    """
+    Convierte DSL a diagrama y guarda en archivo
+    
+    Args:
+        dsl_code: Código Structurizr DSL
+        output_file: Ruta del archivo de salida
+        format: Formato ('svg', 'png', 'pdf', 'jpeg')
+    """
+    diagram_bytes = structurizr_to_diagram(dsl_code, format)
+    
+    with open(output_file, 'wb') as f:
+        f.write(diagram_bytes)
+    
+    print(f"Diagrama guardado en: {output_file}")
+
+def display_diagram_matplotlib(dsl_code: str):
+    """
+    Muestra diagrama usando matplotlib (recomendado)
+    
+    Args:
+        dsl_code: Código Structurizr DSL
+    """
+    try:
+        import matplotlib.pyplot as plt
+        import matplotlib.image as mpimg
+        from io import BytesIO        
+        
+        png_bytes = structurizr_to_diagram(dsl_code, 'png')        
+        
+        img = mpimg.imread(BytesIO(png_bytes), format='png')        
+        
+        plt.figure(figsize=(12, 8))
+        plt.imshow(img)
+        plt.axis('off')  
+        plt.title('Diagrama de Arquitectura')
+        plt.tight_layout()
+        plt.show()
+        
+    except ImportError:
+        print("Error: matplotlib no está instalado. Ejecuta: pip install matplotlib")
+    except Exception as e:
+        print(f"Error mostrando diagrama: {e}")
+
+import requests
+import base64
+import zlib
+
+
+def structurizr_to_diagram(dsl_code: str, format: str = 'svg') -> bytes:
+    """
+    Convierte código Structurizr DSL a diagrama usando la API de Kroki
+    
+    Args:
+        dsl_code: Código en Structurizr DSL como string
+        format: Formato de salida ('svg', 'png', 'pdf', 'jpeg')
+    
+    Returns:
+        Contenido del diagrama en bytes
+        
+    Raises:
+        Exception: Si hay error en la conversión
+    """
+    try:
+        # 1. Comprimir y codificar el código DSL
+        compressed = zlib.compress(dsl_code.encode('utf-8'), level=9)
+        encoded = base64.urlsafe_b64encode(compressed).decode('utf-8')
+        
+        # 2. Construir URL de la API de Kroki
+        url = f"https://kroki.io/structurizr/{format}/{encoded}"
+        
+        # 3. Hacer petición y devolver contenido
+        response = requests.get(url, timeout=30)
+        response.raise_for_status()
+        
+        return response.content
+        
+    except Exception as e:
+        raise Exception(f"Error convirtiendo DSL a diagrama: {str(e)}")
+
+
+# Funciones para visualizar en scripts de Python
+def display_diagram_matplotlib(dsl_code: str):
+    """
+    Muestra diagrama usando matplotlib (recomendado)
+    
+    Args:
+        dsl_code: Código Structurizr DSL
+    """
+    try:
+        import matplotlib.pyplot as plt
+        import matplotlib.image as mpimg
+        from io import BytesIO
+        
+        # Obtener diagrama como PNG
+        png_bytes = structurizr_to_diagram(dsl_code, 'png')
+        
+        # Crear imagen desde bytes
+        img = mpimg.imread(BytesIO(png_bytes), format='png')
+        
+        # Mostrar con matplotlib
+        plt.figure(figsize=(12, 8))
+        plt.imshow(img)
+        plt.axis('off')  # Sin ejes
+        plt.title('Diagrama de Arquitectura')
+        plt.tight_layout()
+        plt.show()
+        
+    except ImportError:
+        print("Error: matplotlib no está instalado. Ejecuta: pip install matplotlib")
+    except Exception as e:
+        print(f"Error mostrando diagrama: {e}")
+
+
+def display_diagram_pil(dsl_code: str):
+    """
+    Muestra diagrama usando PIL/Pillow (alternativa)
+    
+    Args:
+        dsl_code: Código Structurizr DSL
+    """
+    try:
+        from PIL import Image
+        from io import BytesIO
+        
+        # Obtener diagrama como PNG
+        png_bytes = structurizr_to_diagram(dsl_code, 'png')
+        
+        # Abrir imagen con PIL
+        img = Image.open(BytesIO(png_bytes))
+        
+        # Mostrar imagen
+        img.show()  # Abre con el visor por defecto del sistema
+        
+    except ImportError:
+        print("Error: Pillow no está instalado. Ejecuta: pip install Pillow")
+    except Exception as e:
+        print(f"Error mostrando diagrama: {e}")
+
+
+def display_diagram_browser(dsl_code: str):
+    """
+    Muestra diagrama en el navegador web
+    
+    Args:
+        dsl_code: Código Structurizr DSL
+    """
+    try:
+        import webbrowser
+        import tempfile
+        import os
+        
+        # Obtener diagrama como SVG
+        svg_bytes = structurizr_to_diagram(dsl_code, 'svg')
+        
+        # Crear archivo temporal HTML
+        html_content = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Diagrama de Arquitectura</title>
+            <style>
+                body {{
+                    margin: 0;
+                    padding: 20px;
+                    background-color: #f5f5f5;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 100vh;
+                }}
+                .diagram-container {{
+                    background: white;
+                    padding: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    max-width: 90vw;
+                    max-height: 90vh;
+                    overflow: auto;
+                }}
+                svg {{
+                    max-width: 100%;
+                    height: auto;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class="diagram-container">
+                {svg_bytes.decode('utf-8')}
+            </div>
+        </body>
+        </html>
+        """
+        
+        # Guardar archivo temporal
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.html', delete=False) as f:
+            f.write(html_content)
+            temp_file = f.name
+        
+        # Abrir en navegador
+        webbrowser.open(f'file://{os.path.abspath(temp_file)}')
+        print(f"Diagrama abierto en navegador: {temp_file}")
+        
+        # Opcional: limpiar archivo después de un tiempo
+        import threading
+        def cleanup():
+            import time
+            time.sleep(10)  # Espera 10 segundos
+            try:
+                os.unlink(temp_file)
+            except:
+                pass
+        
+        threading.Thread(target=cleanup, daemon=True).start()
+        
+    except Exception as e:
+        print(f"Error mostrando diagrama en navegador: {e}")
+
+
+# Función unificada que intenta diferentes métodos
+def show_diagram_script(dsl_code: str, method: str = 'auto'):
+    """
+    Muestra diagrama en script de Python usando el método especificado
+    
+    Args:
+        dsl_code: Código Structurizr DSL
+        method: 'matplotlib', 'pil', 'browser', 'auto'
+    """
+    if method == 'matplotlib':
+        display_diagram_matplotlib(dsl_code)
+    elif method == 'pil':
+        display_diagram_pil(dsl_code)
+    elif method == 'browser':
+        display_diagram_browser(dsl_code)
+    elif method == 'auto':
+        # Intenta métodos en orden de preferencia
+        try:
+            import matplotlib.pyplot
+            print("Usando matplotlib...")
+            display_diagram_matplotlib(dsl_code)
+        except ImportError:
+            try:
+                from PIL import Image
+                print("Usando PIL...")
+                display_diagram_pil(dsl_code)
+            except ImportError:
+                print("Usando navegador...")
+                display_diagram_browser(dsl_code)
+    else:
+        print(f"Método desconocido: {method}. Usa: 'matplotlib', 'pil', 'browser', o 'auto'")
+
+
+# Funciones para visualizar en Jupyter Notebook
+def display_structurizr_diagram(dsl_code: str, format: str = 'svg'):
+    """
+    Convierte DSL a diagrama y lo muestra en Jupyter Notebook
+    
+    Args:
+        dsl_code: Código Structurizr DSL
+        format: Formato ('svg' recomendado para notebooks, también 'png')
+    
+    Returns:
+        Objeto para mostrar en el notebook
+    """
+    try:
+        from IPython.display import SVG, Image, display
+        
+        diagram_bytes = structurizr_to_diagram(dsl_code, format)
+        
+        if format.lower() == 'svg':
+            return SVG(data=diagram_bytes)
+        else:
+            return Image(data=diagram_bytes)
+            
+    except ImportError:
+        print("Error: IPython no está disponible. ¿Estás ejecutando esto en un Jupyter Notebook?")
+        return None
+    except Exception as e:
+        print(f"Error mostrando diagrama: {e}")
+        return None
+
+
+def show_diagram(dsl_code: str, format: str = 'svg'):
+    """
+    Función más simple para mostrar diagrama directamente
+    
+    Args:
+        dsl_code: Código Structurizr DSL
+        format: Formato del diagrama
+    """
+    diagram = display_structurizr_diagram(dsl_code, format)
+    if diagram:
+        from IPython.display import display
+        display(diagram)
+
+
+# Función específica para Streamlit
+def display_diagram_streamlit(dsl_code: str, format: str = 'png'):
+    """
+    Muestra diagrama en Streamlit
+    
+    Args:
+        dsl_code: Código Structurizr DSL
+        format: Formato ('png' recomendado para Streamlit, también 'svg')
+    
+    Returns:
+        bytes del diagrama para usar con st.image()
+    """
+    try:
+        # Limpiar y validar el DSL code
+        dsl_code = dsl_code.strip()
+        
+        if not dsl_code:
+            raise ValueError("El código DSL está vacío")
+        
+        # Validar que empiece con 'workspace'
+        if not dsl_code.startswith('workspace'):
+            raise ValueError("El DSL debe empezar con 'workspace'")
+        
+        diagram_bytes = structurizr_to_diagram(dsl_code, format)
+        
+        if not diagram_bytes:
+            raise ValueError("No se generaron bytes del diagrama")
+            
+        return diagram_bytes
+        
+    except requests.HTTPError as e:
+        error_msg = f"Error HTTP {e.response.status_code}"
+        if e.response.status_code == 400:
+            error_msg += " - El código DSL tiene errores de sintaxis"
+        elif e.response.status_code == 500:
+            error_msg += " - Error del servidor Kroki"
+        print(f"Error HTTP generando diagrama: {error_msg}")
+        return None
+        
+    except Exception as e:
+        print(f"Error generando diagrama para Streamlit: {e}")
+        return None
+
+
+# Función auxiliar para limpiar y validar DSL
+def clean_dsl_code(dsl_code: str) -> str:
+    """
+    Limpia y valida código DSL
+    
+    Args:
+        dsl_code: Código DSL crudo
+        
+    Returns:
+        Código DSL limpio
+    """
+    # Remover espacios extra y líneas vacías al inicio/final
+    dsl_code = dsl_code.strip()
+    
+    # Si no empieza con workspace, podría estar dentro de bloques de código
+    if not dsl_code.startswith('workspace'):
+        # Buscar el bloque workspace
+        lines = dsl_code.split('\n')
+        start_idx = None
+        end_idx = None
+        
+        for i, line in enumerate(lines):
+            if line.strip().startswith('workspace'):
+                start_idx = i
+                break
+        
+        if start_idx is not None:
+            # Encontrar el final del workspace (última línea con })
+            brace_count = 0
+            for i in range(start_idx, len(lines)):
+                line = lines[i].strip()
+                brace_count += line.count('{')
+                brace_count -= line.count('}')
+                if brace_count == 0 and i > start_idx:
+                    end_idx = i
+                    break
+            
+            if end_idx is not None:
+                dsl_code = '\n'.join(lines[start_idx:end_idx+1])
+    
+    return dsl_code

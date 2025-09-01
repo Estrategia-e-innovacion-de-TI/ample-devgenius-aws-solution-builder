@@ -7,6 +7,7 @@ from utils import save_conversation
 from utils import collect_feedback
 from utils import continuation_prompt
 from utils import invoke_bedrock_model_streaming
+from utils import display_diagram_streamlit, clean_dsl_code
 
 
 @st.fragment
@@ -25,7 +26,7 @@ def generate_dsl(dsl_messages):
 
     with left:
         st.markdown(
-            "<div style='font-size: 18px'><b>Usa la casilla de verificación de abajo para generar un diagrama de arquitectura en DSL</b></div>",  # noqa
+            "<div style='font-size: 18px'><b>Usa la casilla de verificación de abajo para generar un diagrama de arquitectura en DSL</b></div>", 
             unsafe_allow_html=True)
         st.divider()
         st.markdown("<div class=stButton gen-style'>", unsafe_allow_html=True)
@@ -174,20 +175,41 @@ def generate_dsl(dsl_messages):
         try:
             full_response = ''.join(str(x) for x in full_response_array)
             # Extraemos el bloque de DSL del markdown
-            dsl_code = get_code_from_markdown.get_code_from_markdown(full_response, language="dsl")[0]
+            raw_dsl_code = get_code_from_markdown.get_code_from_markdown(full_response, language="dsl")[0]            
+            
+            # Limpiar y validar el código DSL
+            dsl_code = clean_dsl_code(raw_dsl_code)
 
             # Mostrar el DSL en un text area (copiable)
             st.text_area("DSL Output", value=dsl_code, height=350)
 
-            st.session_state.dsl_messages.append({"role": "assistant", "content": "DSL"})
+            # Convertir a diagrama y mostrar en Streamlit
+            st.subheader("Diagrama C4")
+            
+            with st.spinner("Generando diagrama..."):
+                diagram_bytes = display_diagram_streamlit(dsl_code, 'png')  
+            
+            if diagram_bytes:
+                st.image(diagram_bytes, caption="Diagrama C4 generado", width=600)
+                st.success("Diagrama generado correctamente")
+            else:
+                st.error("Error generando el diagrama. Verifique la sintaxis del DSL.")
+                # Mostrar el DSL para debug
+                st.code(dsl_code, language='text')
 
+            st.session_state.dsl_messages.append({"role": "assistant", "content": "DSL"})
             st.session_state.interaction.append({"type": "DSL Diagram", "details": full_response})
             store_in_s3(content=full_response, content_type='dsl')
             save_conversation(st.session_state['conversation_id'], dsl_prompt, full_response)
             collect_feedback(str(uuid.uuid4()), dsl_code, "generate_dsl", BEDROCK_MODEL_ID)
 
+        except IndexError:
+            st.error("No se encontró código DSL en la respuesta generada.")
+            st.code(full_response, language='text')
+            
         except Exception as e:
             st.error("Internal error occurred. Please try again.")
             print(f"Error occurred when generating DSL: {str(e)}")
-            del st.session_state.dsl_messages[-1]
-            del dsl_messages[-1]
+            if 'dsl_messages' in locals() and len(st.session_state.dsl_messages) > 0:
+                del st.session_state.dsl_messages[-1]
+                del dsl_messages[-1]
