@@ -21,7 +21,7 @@ async def generate_dsl_code(
     
     Esta herramienta genera código DSL (Domain Specific Language) de Structurizr
     para crear diagramas C4 de arquitectura de software. El código generado puede
-    ser utilizado directamente en Structurizr para visualizar la arquitectura.
+    ser utilizado directamente en Struajajcturizr para visualizar la arquitectura.
     
     Args:
         architecture_description: Descripción detallada de la arquitectura a modelar

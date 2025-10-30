@@ -102,3 +102,25 @@ DSL_PROMPT = """Genera un diagrama de arquitectura de software en código Struct
         4. `container -> externalSystem`
 
         Ahora aplica este proceso de razonamiento para generar tu código en Structurizr DSL, asegurando que se sigan estrictamente todas las reglas."""
+
+ARCHITECTURE_PROMPT = """
+        Genera un diagrama de arquitectura y flujo de datos en AWS para la solución dada, aplicando las buenas prácticas de AWS. Sigue estos pasos:
+        1. Crea un archivo XML adecuado para draw.io que capture la arquitectura y el flujo de datos.
+        2. Haz referencia a los íconos de arquitectura más recientes de AWS aquí: https://aws.amazon.com/architecture/icons/. Usa SIEMPRE los íconos de AWS más recientes para generar la arquitectura.
+        3. Responde únicamente con el XML en formato markdown—sin texto adicional.
+        4. Asegura que el XML esté completo, con todas las etiquetas de apertura y cierre correctamente formadas.
+        5. Confirma que todos los servicios/íconos de AWS estén correctamente conectados y que estén contenidos dentro de un ícono de AWS Cloud, desplegados dentro de una VPC cuando corresponda.
+        6. Elimina espacios en blanco innecesarios para optimizar el tamaño y minimizar los tokens de salida.
+        7. Usa íconos válidos de arquitectura de AWS para representar los servicios; evita imágenes aleatorias.
+        8. Asegúrate de que el diagrama de arquitectura esté claramente definido, ordenado y muy legible. El flujo debe ser visualmente limpio, con todas las flechas correctamente conectadas sin superposiciones. Asegúrate de que los íconos de servicios de AWS estén alineados sin chocar con flechas u otros elementos. Si se incluyen servicios no-AWS como bases de datos on-premise, servidores o sistemas externos, utiliza íconos genéricos apropiados de draw.io para representarlos. El diagrama final debe lucir pulido, profesional y fácil de entender de un vistazo.
+        9. Crea un diagrama de arquitectura claramente estructurado y de alta legibilidad. Organiza todos los íconos de servicios AWS y los componentes no-AWS (usa íconos genéricos de draw.io para servidores on-premise, bases de datos, etc.) de forma limpia, visualmente alineada y con espaciado adecuado. Asegura que las flechas sean rectas, no se solapen ni se enreden, y que indiquen el flujo sin cruzar los íconos de servicio. Mantén suficiente separación entre los elementos para evitar saturación. El diagrama en conjunto debe verse profesional, pulido, y el flujo de datos debe ser inmediatamente comprensible.
+        10. El XML final debe ser sintácticamente correcto y cubrir todos los componentes de la solución dada.
+        """
+
+CDK_PROMPT = """
+        Genera un script de CDK en TypeScript para automatizar y desplegar los recursos necesarios de AWS.
+        Proporciona el código fuente real para todos los trabajos cuando corresponda.
+        El código CDK debe aprovisionar todos los recursos y componentes sin restricciones de versión.
+        Si se necesita código en Python, genera un ejemplo "Hello, World!".
+        Al final, genera comandos de ejemplo para desplegar el código CDK.
+        """

@@ -1,7 +1,8 @@
 from fastmcp import FastMCP
 from typing import Any
 import uuid
-from utils import BEDROCK_MODEL_ID, store_in_s3, save_conversation, collect_feedback, invoke_bedrock_model_streaming
+from utils.utils import BEDROCK_MODEL_ID, store_in_s3, save_conversation, collect_feedback, invoke_bedrock_model_streaming
+from prompts.prompt_templates import CDK_PROMPT
 
 # Initialize FastMCP
 mcp = FastMCP("CDK Generator")
@@ -35,13 +36,9 @@ def generate_cdk_code(
     cdk_messages = conversation_messages[:]
     
     cdk_prompt = f"""
-    Para la siguiente solución: {solution_description}
+    Para la siguiente solución de arquitectura para AWS: {solution_description}
     
-    Genera un script de CDK en TypeScript para automatizar y desplegar los recursos necesarios de AWS.
-    Proporciona el código fuente real para todos los trabajos cuando corresponda.
-    El código CDK debe aprovisionar todos los recursos y componentes sin restricciones de versión.
-    Si se necesita código en Python, genera un ejemplo "Hello, World!".
-    Al final, genera comandos de ejemplo para desplegar el código CDK.
+    {CDK_PROMPT}
     """
     
     # Add the prompt to messages
