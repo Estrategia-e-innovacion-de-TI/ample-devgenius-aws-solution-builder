@@ -127,11 +127,85 @@ CDK_PROMPT = """
 
 
 CFN_PROMPT = """
-    Para la siguiente solución: {solution_description}
-    
-    Genera una plantilla de CloudFormation en YAML para automatizar el despliegue de recursos de AWS.
-    Proporciona el código fuente real para todos los jobs cuando corresponda.
-    La plantilla de CloudFormation debe aprovisionar todos los recursos y componentes.
-    Si se necesita código en Python, genera un ejemplo "Hello, World!".
-    Al final, genera comandos de ejemplo para desplegar la plantilla de CloudFormation.
-    """
+        Para la siguiente solución: {solution_description}
+        
+        Genera una plantilla de CloudFormation en YAML para automatizar el despliegue de recursos de AWS.
+        Proporciona el código fuente real para todos los jobs cuando corresponda.
+        La plantilla de CloudFormation debe aprovisionar todos los recursos y componentes.
+        Si se necesita código en Python, genera un ejemplo "Hello, World!".
+        Al final, genera comandos de ejemplo para desplegar la plantilla de CloudFormation.
+        """
+
+
+DOC_GENERATION_PROMPT = """
+        Para la siguiente solución: {solution_description}
+
+        Genera una documentación técnica completa y profesional que incluya una tabla de contenidos, 
+        para la arquitectura especificada. Expande todos los temas de la tabla de contenidos para 
+        crear una documentación técnica profesional integral de tipo: {documentation_type}.
+
+        La documentación debe incluir:
+        1. Resumen ejecutivo
+        2. Arquitectura del sistema
+        3. Componentes y servicios
+        4. Flujos de datos
+        5. Configuración y despliegue
+        6. Seguridad y cumplimiento
+        7. Operaciones y mantenimiento
+        8. Troubleshooting
+        9. Anexos técnicos
+        """
+
+
+DOC_SECTION_PROMPTS = {
+    "architecture": """
+        Para la siguiente solución: {solution_description}
+        
+        Genera una sección de documentación de arquitectura que incluya:
+        1. Diagrama de arquitectura conceptual
+        2. Descripción de componentes principales
+        3. Flujo de datos y comunicación entre servicios
+        4. Patrones de arquitectura utilizados
+        5. Decisiones de diseño y justificaciones
+        """,
+    "deployment": """
+        Para la siguiente solución: {solution_description}
+        
+        Genera una sección de documentación de despliegue que incluya:
+        1. Prerrequisitos del sistema
+        2. Pasos detallados de instalación/despliegue
+        3. Configuración de variables de entorno
+        4. Validación post-despliegue
+        5. Rollback procedures
+        """,
+    "security": """
+        Para la siguiente solución: {solution_description}
+        
+        Genera una sección de documentación de seguridad que incluya:
+        1. Modelo de seguridad y amenazas
+        2. Configuraciones de IAM y permisos
+        3. Cifrado de datos en tránsito y reposo
+        4. Auditoría y logging de seguridad
+        5. Mejores prácticas de seguridad
+        """,
+    "operations": """
+        Para la siguiente solución: {solution_description}
+        
+        Genera una sección de documentación operacional que incluya:
+        1. Monitoreo y alertas
+        2. Procedimientos de mantenimiento
+        3. Backup y recovery
+        4. Escalabilidad y performance tuning
+        5. Runbooks operacionales
+        """,
+    "troubleshooting": """
+        Para la siguiente solución: {solution_description}
+        
+        Genera una sección de documentación de troubleshooting que incluya:
+        1. Problemas comunes y soluciones
+        2. Logs importantes y su ubicación
+        3. Herramientas de diagnóstico
+        4. Procedimientos de escalación
+        5. FAQ técnico
+        """
+}
