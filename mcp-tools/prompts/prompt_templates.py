@@ -124,3 +124,14 @@ CDK_PROMPT = """
         Si se necesita código en Python, genera un ejemplo "Hello, World!".
         Al final, genera comandos de ejemplo para desplegar el código CDK.
         """
+
+
+CFN_PROMPT = """
+    Para la siguiente solución: {solution_description}
+    
+    Genera una plantilla de CloudFormation en YAML para automatizar el despliegue de recursos de AWS.
+    Proporciona el código fuente real para todos los jobs cuando corresponda.
+    La plantilla de CloudFormation debe aprovisionar todos los recursos y componentes.
+    Si se necesita código en Python, genera un ejemplo "Hello, World!".
+    Al final, genera comandos de ejemplo para desplegar la plantilla de CloudFormation.
+    """
