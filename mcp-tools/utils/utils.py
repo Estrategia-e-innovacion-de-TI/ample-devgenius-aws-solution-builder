@@ -1,5 +1,26 @@
 import get_code_from_markdown
 from typing import Optional, Tuple
+from defusedxml.ElementTree import fromstring
+from defusedxml.ElementTree import tostring
+
+def convert_xml_to_html(xml_string):
+    html_output = """
+    <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;{text_to_replace}\\n&quot;}}"></div>
+    <script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
+    """  # noqa
+
+    root = fromstring(xml_string, forbid_entities=True)
+    xml_str_bytes = tostring(root, encoding='utf8', method='xml', xml_declaration=False)
+    xml_str = xml_str_bytes.decode('utf-8')
+
+    xml_str = xml_str.replace("&", "&amp;")
+    xml_str = xml_str.replace("<", "&lt;")
+    xml_str = xml_str.replace(">", "&gt;")
+    xml_str = xml_str.replace('"', "\&quot;")  # noqa
+    xml_str = xml_str.replace("\n", "\\n")
+
+    final_html_output = html_output.format(text_to_replace=xml_str)
+    return final_html_output
 
 # Función auxiliar para limpiar y validar DSL
 def clean_dsl_code(dsl_code: str) -> str:
