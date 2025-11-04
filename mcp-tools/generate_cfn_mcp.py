@@ -6,7 +6,7 @@ from botocore.config import Config
 import get_code_from_markdown
 from utils import BEDROCK_MODEL_ID, invoke_bedrock_model_streaming, retrieve_environment_variables
 from utils import store_in_s3, save_conversation, collect_feedback
-from prompt_templates import CFN_GENERATION_PROMPT
+from prompts.prompt_templates import CFN_GENERATION_PROMPT
 
 # Initialize FastMCP
 mcp = FastMCP("CloudFormation Generator")

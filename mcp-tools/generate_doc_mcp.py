@@ -1,7 +1,7 @@
 from fastmcp import FastMCP
 import uuid
 from utils import BEDROCK_MODEL_ID, store_in_s3, save_conversation, collect_feedback, invoke_bedrock_model_streaming
-from prompt_templates import DOC_GENERATION_PROMPT, DOC_SECTION_PROMPTS
+from prompts.prompt_templates import DOC_GENERATION_PROMPT, DOC_SECTION_PROMPTS
 
 # Initialize FastMCP
 mcp = FastMCP("Documentation Generator")
