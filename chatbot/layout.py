@@ -11,7 +11,7 @@ def login_page():
         logo_col, _ = st.columns([30, 1])
 
         with logo_col:
-            st.image("chatbot/images/LogoBancolombia.png", width=80)
+            st.image("./images/LogoBancolombia.png", width=80)
             st.title("DevGenius ARQ")
             st.title("Confirmar")
 
@@ -98,7 +98,7 @@ def welcome_sidebar():
     logo_col, _ = st.columns([3, 1])
 
     with logo_col:
-        st.image("chatbot/images/LogoBancolombia.png", width=80)
+        st.image("./images/LogoBancolombia.png", width=80)
         st.title("DevGenius ARQ")
 
         st.divider()
