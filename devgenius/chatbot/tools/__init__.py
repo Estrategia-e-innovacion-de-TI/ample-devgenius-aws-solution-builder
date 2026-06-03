@@ -3,6 +3,7 @@ from chatbot.tools.generate_cdk import generate_cdk
 from chatbot.tools.generate_cfn import generate_cfn
 from chatbot.tools.generate_doc import generate_doc
 from chatbot.tools.dsl_code import generate_dsl
+from chatbot.tools.dsl_c1_context import generate_c1_context
 
 ALL_TOOLS = [
     generate_architecture,
@@ -10,4 +11,5 @@ ALL_TOOLS = [
     generate_cfn,
     generate_doc,
     generate_dsl,
+    generate_c1_context,
 ]

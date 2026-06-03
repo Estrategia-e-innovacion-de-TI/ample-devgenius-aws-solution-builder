@@ -33,6 +33,7 @@ Herramientas disponibles:
   3. generate_cfn          - Plantilla AWS CloudFormation (YAML)
   4. generate_doc          - Documentación técnica completa
   5. generate_dsl          - Diagramas modelo C4 (Structurizr DSL + imagen PNG)
+  6. generate_c1_context   - Diagrama C4 Nivel C1 System Context (DSL + imagen PNG)
 
 Pide al agente que genere cualquiera de estos artefactos durante la conversación.
 """

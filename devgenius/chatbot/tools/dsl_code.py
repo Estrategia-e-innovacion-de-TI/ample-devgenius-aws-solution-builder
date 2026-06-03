@@ -14,9 +14,9 @@ from chatbot.utils import get_code_from_markdown, clean_dsl_code, structurizr_to
 @tool
 def generate_dsl(conversation_context: str) -> str:
     """
-    Genera un diagrama de arquitectura C4 usando Structurizr DSL y lo convierte
+    Genera un diagrama de arquitectura en modelo C4 usando Structurizr DSL y lo convierte
     a imagen PNG exportada a la carpeta output/. Usa esta herramienta cuando el
-    usuario pida un diagrama C4 o un diagrama DSL de la solución.
+    usuario pida un diagrama modelo C4 o un diagrama DSL de la solución.
 
     Args:
         conversation_context: Resumen de la solución/arquitectura discutida en la conversación.
