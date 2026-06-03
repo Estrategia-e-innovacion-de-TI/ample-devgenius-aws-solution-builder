@@ -32,7 +32,7 @@ Herramientas disponibles:
   2. generate_cdk          - Código AWS CDK en TypeScript
   3. generate_cfn          - Plantilla AWS CloudFormation (YAML)
   4. generate_doc          - Documentación técnica completa
-  5. generate_dsl          - Diagrama C4 (Structurizr DSL + imagen PNG)
+  5. generate_dsl          - Diagramas modelo C4 (Structurizr DSL + imagen PNG)
 
 Pide al agente que genere cualquiera de estos artefactos durante la conversación.
 """
