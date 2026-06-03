@@ -5,38 +5,35 @@ Bucle interactivo de conversación con el agente de arquitectura AWS.
 import uuid
 import sys
 
-from chatbot.agent import create_agent
+from chatbot.agent import create_agent, ALL_TOOLS
 
 
 WELCOME_MESSAGE = """
 ╔══════════════════════════════════════════════════════════════╗
-║                    🏗️  DevGenius CLI                        ║
-║         Arquitecto de Soluciones AWS con IA                 ║
+║                    🏗️  ArqGenius CLI                        ║
+║         Arquitecto de Soluciones con IA                 ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  Comandos especiales:                                       ║
 ║    /new     - Iniciar nueva conversación                    ║
-║    /tools   - Listar herramientas disponibles               ║
+║    /tools   - Listar herramientas disponibles (skills)      ║
 ║    /exit    - Salir                                         ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  Los artefactos generados se guardan en: chatbot/output/    ║
 ╚══════════════════════════════════════════════════════════════╝
 
-Bienvenido a DevGenius: convirtiendo ideas en realidad.
+Bienvenido a ArqGenius: convirtiendo ideas en realidad.
 Juntos diseñaremos tu arquitectura y solución AWS.
 ¡Comencemos a construir!
 """
 
-TOOLS_INFO = """
-Herramientas disponibles:
-  1. generate_architecture - Diagrama de arquitectura AWS (XML/draw.io + HTML)
-  2. generate_cdk          - Código AWS CDK en TypeScript
-  3. generate_cfn          - Plantilla AWS CloudFormation (YAML)
-  4. generate_doc          - Documentación técnica completa
-  5. generate_dsl          - Diagramas modelo C4 (Structurizr DSL + imagen PNG)
-  6. generate_c1_context   - Diagrama C4 Nivel C1 System Context (DSL + imagen PNG)
 
-Pide al agente que genere cualquiera de estos artefactos durante la conversación.
-"""
+def _build_tools_info() -> str:
+    """Genera dinámicamente la lista de skills disponibles."""
+    lines = ["\nSkills disponibles:"]
+    for i, tool in enumerate(ALL_TOOLS, 1):
+        lines.append(f"  {i}. {tool.name:<25} - {tool.description}")
+    lines.append("\nPide al agente que genere cualquiera de estos artefactos durante la conversación.\n")
+    return "\n".join(lines)
 
 
 def run_cli():
@@ -69,7 +66,7 @@ def run_cli():
             print(f"\n--- Nueva conversación iniciada [Sesión: {session_id[:8]}...] ---\n")
             continue
         elif user_input.lower() == "/tools":
-            print(TOOLS_INFO)
+            print(_build_tools_info())
             continue
 
         # Invocar el agente

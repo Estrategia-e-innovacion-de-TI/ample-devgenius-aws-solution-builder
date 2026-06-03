@@ -1,14 +1,17 @@
 """
 Utilidades compartidas: extracción de código de markdown, conversión DSL a diagrama,
-carga de archivos externos.
+carga de archivos externos, loader dinámico de skills.
 """
 import os
 import re
 import glob
 import zlib
 import base64
-import requests
+import importlib
 from typing import Optional
+
+import requests
+from langchain_core.tools import StructuredTool
 
 
 def get_code_from_markdown(text: str, language: str = "") -> list[str]:
@@ -107,3 +110,77 @@ def load_markdown_files(directory: str) -> str:
         with open(filepath, "r", encoding="utf-8") as f:
             content_parts.append(f.read().strip())
     return "\n\n---\n".join(content_parts)
+
+
+def load_skills(skills_dir: str) -> list:
+    """
+    Descubre y carga dinámicamente todas las skills del directorio dado.
+
+    Cada skill es una subcarpeta que contiene:
+    - SKILL.md: descripción y triggers (usada como docstring de la tool).
+    - script.py: módulo con función run(conversation_context: str) -> str.
+
+    Args:
+        skills_dir: Ruta absoluta al directorio de skills.
+
+    Returns:
+        Lista de LangChain tools generadas dinámicamente desde las skills.
+    """
+    tools = []
+    skills_dir = os.path.abspath(skills_dir)
+
+    if not os.path.isdir(skills_dir):
+        return tools
+
+    for skill_name in sorted(os.listdir(skills_dir)):
+        skill_path = os.path.join(skills_dir, skill_name)
+
+        # Solo procesar directorios con SKILL.md y script.py
+        skill_md = os.path.join(skill_path, "SKILL.md")
+        script_py = os.path.join(skill_path, "script.py")
+
+        if not os.path.isdir(skill_path):
+            continue
+        if not os.path.isfile(skill_md) or not os.path.isfile(script_py):
+            continue
+
+        # Leer descripción del SKILL.md
+        with open(skill_md, "r", encoding="utf-8") as f:
+            skill_description = f.read().strip()
+
+        # Extraer la primera sección "## Descripción" como descripción corta para la tool
+        short_desc = _extract_description(skill_description)
+
+        # Importar dinámicamente el módulo script.py
+        module_name = f"chatbot.skills.{skill_name}.script"
+        module = importlib.import_module(module_name)
+        run_fn = module.run
+
+        # Crear LangChain tool
+        tool = StructuredTool.from_function(
+            func=run_fn,
+            name=skill_name,
+            description=short_desc,
+        )
+        tools.append(tool)
+
+    return tools
+
+
+def _extract_description(skill_md_content: str) -> str:
+    """Extrae la descripción corta del SKILL.md (contenido bajo ## Descripción)."""
+    lines = skill_md_content.split("\n")
+    capture = False
+    description_lines = []
+
+    for line in lines:
+        if line.strip().startswith("## Descripción"):
+            capture = True
+            continue
+        if capture:
+            if line.strip().startswith("## "):
+                break
+            if line.strip():
+                description_lines.append(line.strip())
+
+    return " ".join(description_lines) if description_lines else skill_md_content[:200]

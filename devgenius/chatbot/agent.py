@@ -10,12 +10,18 @@ from langchain_aws import ChatBedrock
 from botocore.config import Config
 
 from chatbot.config import AWS_REGION, BEDROCK_MODEL_ID, BEDROCK_MAX_TOKENS, BEDROCK_TEMPERATURE
-from chatbot.tools import ALL_TOOLS
-from chatbot.utils import load_markdown_files
+from chatbot.utils import load_markdown_files, load_skills
 
 # Directorio de principios de arquitectura
 PRINCIPLES_DIR = os.path.join(os.path.dirname(__file__), "principles", "source")
 PRINCIPLES = load_markdown_files(PRINCIPLES_DIR)
+
+# Cargar skills dinámicamente
+SKILLS_DIR = os.path.join(os.path.dirname(__file__), "skills")
+ALL_TOOLS = load_skills(SKILLS_DIR)
+
+# Generar lista de herramientas dinámicamente desde las skills cargadas
+_TOOLS_LIST = "\n".join(f"- {t.name}: {t.description}" for t in ALL_TOOLS)
 
 SYSTEM_PROMPT = f"""Eres ArqGenius, un sistema de arquitectura técnica y de soluciones senior especializado en diseñar arquitecturas cloud y empresariales.
 
@@ -26,12 +32,7 @@ Tu rol es:
 4. SIEMPRE aplicar y respetar los Principios y Lineamientos de Arquitectura definidos a continuación en TODAS las soluciones que propongas.
 
 Herramientas disponibles:
-- generate_architecture: Genera un diagrama de arquitectura AWS de la solución en XML (draw.io). Exporta archivo .drawio y .html.
-- generate_cdk: Genera código CDK en TypeScript para desplegar la solución.
-- generate_cfn: Genera plantilla CloudFormation en YAML.
-- generate_doc: Genera documentación técnica completa.
-- generate_dsl: Genera diagrama C4 en Structurizr DSL y exporta imagen PNG.
-- generate_c1_context: Genera diagrama de la solución en Nivel C1 (System Context) en Structurizr DSL y exporta imagen PNG.
+{_TOOLS_LIST}
 
 Reglas:
 - Responde siempre en Español.

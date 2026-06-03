@@ -1,38 +1,17 @@
 """
-Herramienta: Generar diagrama C4 Nivel C1 (System Context Diagram) en Structurizr DSL.
+Skill: Generar diagrama C4 Nivel C1 (System Context Diagram) en Structurizr DSL.
 Exporta la imagen PNG del diagrama a la carpeta output/.
 """
 import os
 import json
 import datetime
-from langchain_core.tools import tool
 
 from chatbot.config import OUTPUT_DIR
 from chatbot.utils import get_code_from_markdown, clean_dsl_code, structurizr_to_diagram
 
 
-@tool
-def generate_c1_context(conversation_context: str) -> str:
-    """
-    Genera un diagrama C4 Nivel C1 (System Context Diagram) usando Structurizr DSL
-    y lo convierte a imagen PNG exportada a la carpeta output/. Usa esta herramienta
-    cuando el usuario pida un diagrama de contexto del sistema, un diagrama C1,
-    o un diagrama que muestre el sistema principal con sus actores y sistemas externos.
-
-    Un diagrama C1 muestra ÚNICAMENTE:
-    - El sistema principal (System Under Design).
-    - Personas/actores que interactúan con el sistema.
-    - Sistemas externos relacionados.
-    - Relaciones de alto nivel entre ellos.
-
-    NO incluye contenedores internos, componentes, clases ni detalles de implementación.
-
-    Args:
-        conversation_context: Resumen de la solución/arquitectura discutida en la conversación.
-
-    Returns:
-        El código DSL generado y la ruta de la imagen exportada.
-    """
+def run(conversation_context: str) -> str:
+    """Ejecuta la generación de diagrama C4 Nivel C1 (System Context)."""
     from chatbot.config import BEDROCK_MODEL_ID, BEDROCK_MAX_TOKENS, AWS_REGION
     import boto3
     from botocore.config import Config
