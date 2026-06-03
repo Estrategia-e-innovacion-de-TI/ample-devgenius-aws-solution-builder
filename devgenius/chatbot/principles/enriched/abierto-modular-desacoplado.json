@@ -1,0 +1,581 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "abierto-modular-desacoplado",
+  "name": "Abierto, Modular, Desacoplado",
+  "version": "1.0.0",
+  "declaration": "Los sistemas deben diseñarse como servicios modulares independientes y desacoplados con capacidades para operar de forma autónoma y de activación/desactivación dinámica, siguiendo patrones event-driven y principios de microservicios.",
+  "description": "Define que cada servicio debe ser completamente independiente con sus propios datos, lógica de negocio y ciclo de vida. Los servicios se comunican exclusivamente a través de eventos y APIs bien definidas, permitiendo el despliegue, escalamiento y mantenimiento independiente.",
+  "scope": "Todas las nuevas soluciones tecnológicas y modernización de sistemas existentes.",
+  "benefits": [
+    "Escalabilidad independiente por servicio",
+    "Despliegue y mantenimiento independiente",
+    "Resiliencia y tolerancia a fallos",
+    "Reutilización y composición de servicios"
+  ],
+  "iso25010Attributes": [
+    "Eficiencia de Desempeño",
+    "Mantenibilidad",
+    "Confiabilidad",
+    "Reusabilidad"
+  ],
+  "applicability": {
+    "enterprise": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "domain": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "reference": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "solution": {
+      "applies": true,
+      "weight": 1.0
+    }
+  },
+  "criteria": [
+    {
+      "id": "AMD-D-01",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establece la modularidad y el desacoplamiento como lineamiento obligatorio para el diseño de nuevos sistemas?",
+      "rationale": "Un lineamiento explícito es la base mínima de adherencia organizacional.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "AMD-D-02",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se define una política de comunicación inter-servicio basada en eventos y APIs versionadas?",
+      "rationale": "La prescripción normativa del estilo de integración impulsa la adopción.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "AMD-S-01",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se identifican dominios y bounded contexts organizacionales con ownership claro?",
+      "rationale": "Sin dominios identificados, el desacoplamiento queda en lo conceptual.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "AMD-S-02",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se definen estándares de versionado y retrocompatibilidad de contratos de servicio?",
+      "rationale": "Sin versionado, el desacoplamiento es teórico.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "policy",
+        "contract"
+      ]
+    },
+    {
+      "id": "AMD-D-03",
+      "dimension": "declarative",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se documentan las decisiones de desacoplamiento entre los subdominios y componentes del dominio?",
+      "rationale": "Las decisiones explícitas de bounded context son evidencia clave de adherencia.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "AMD-D-04",
+      "dimension": "declarative",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se justifica la elección de patrones de integración (síncrona, asíncrona, batch) para cada flujo?",
+      "rationale": "El análisis consciente del estilo de integración refleja madurez arquitectónica.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "AMD-S-03",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Los componentes del dominio tienen responsabilidades diferenciadas sin solapamiento funcional?",
+      "rationale": "El solapamiento funcional es el indicador principal de acoplamiento a nivel de dominio.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "AMD-S-04",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Los flujos de integración del dominio privilegian comunicación asíncrona (eventos/colas) donde es viable?",
+      "rationale": "El principio empuja hacia event-driven; la proporción de async es un proxy directo.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "AMD-D-05",
+      "dimension": "declarative",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se documentan patrones de desacoplamiento como artefactos reutilizables (guías, templates, blueprints)?",
+      "rationale": "Una AR sin artefactos consumibles no traslada el principio a las soluciones.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "AMD-S-05",
+      "dimension": "structural",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se proveen contratos de servicio estandarizados (OpenAPI, AsyncAPI, schemas) como activos reutilizables?",
+      "rationale": "Los contratos reusables aceleran la adopción del desacoplamiento.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "contract",
+        "pattern"
+      ]
+    },
+    {
+      "id": "AMD-S-06",
+      "dimension": "structural",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se incluyen plantillas de despliegue independiente por servicio (pipelines, manifests)?",
+      "rationale": "El despliegue independiente es el corolario operativo del desacoplamiento.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "pattern",
+        "section"
+      ]
+    },
+    {
+      "id": "AMD-D-06",
+      "dimension": "declarative",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se documentan los patrones de desacoplamiento seleccionados con justificación (ADRs)?",
+      "rationale": "Las ADRs evidencian la toma de decisión consciente sobre desacoplamiento.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "AMD-S-07",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Cada servicio tiene su propio almacén de datos sin compartir tablas con otros servicios?",
+      "rationale": "Compartir tablas es el indicador #1 de acoplamiento de datos.",
+      "weight": 1.0,
+      "evaluation": "binary",
+      "scoringGuide": {
+        "0": "No se evidencia.",
+        "1": "Se evidencia en la documentación."
+      },
+      "evidenceTypes": [
+        "diagram",
+        "adr"
+      ]
+    },
+    {
+      "id": "AMD-S-08",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿La proporción de integraciones asíncronas sobre integraciones síncronas críticas es alta?",
+      "rationale": "Un ratio alto confirma la adopción real del estilo event-driven.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "AMD-S-09",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Cada servicio tiene ciclo de despliegue independiente (pipeline propio)?",
+      "rationale": "El despliegue independiente confirma desacoplamiento operativo.",
+      "weight": 1.0,
+      "evaluation": "binary",
+      "scoringGuide": {
+        "0": "No se evidencia.",
+        "1": "Se evidencia en la documentación."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "AMD-S-10",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Existen mecanismos de activación/desactivación dinámica (feature toggles, circuit breakers)?",
+      "rationale": "El principio exige capacidad de activación/desactivación dinámica.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "pattern",
+        "adr"
+      ]
+    }
+  ],
+  "antipatterns": [
+    {
+      "id": "AMD-AP-01",
+      "description": "Base de datos compartida (tablas/colecciones accedidas por más de un servicio).",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AMD-AP-02",
+      "description": "Cadena de llamadas síncronas críticas (>2 saltos) sin compensación ni circuit breaker.",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AMD-AP-03",
+      "description": "Despliegue empaquetado (monolito de despliegue) que incluye múltiples servicios lógicos.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AMD-AP-04",
+      "description": "Contratos sin versión o sin política de retrocompatibilidad documentada.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AMD-AP-05",
+      "description": "Acoplamiento por archivos compartidos o ETLs nocturnos que reemplazan integraciones de servicio.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "id": "AMD-MX-01",
+      "name": "Tiempo de escalamiento automático",
+      "unit": "segundos",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<60s",
+        "yellow": "60-180s",
+        "red": ">180s"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AMD-MX-02",
+      "name": "Utilización de recursos por servicio",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": "60-80%",
+        "yellow": "40-60% u 80-90%",
+        "red": "<40% o >90%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AMD-MX-03",
+      "name": "Tiempo de despliegue por servicio",
+      "unit": "minutos",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<10min",
+        "yellow": "10-30min",
+        "red": ">30min"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AMD-MX-04",
+      "name": "Frecuencia de releases independientes",
+      "unit": "releases/mes/servicio",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=4",
+        "yellow": "1-3",
+        "red": "<1"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AMD-MX-05",
+      "name": "Disponibilidad por servicio",
+      "unit": "% (SLO)",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=99.9%",
+        "yellow": "99-99.9%",
+        "red": "<99%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AMD-MX-06",
+      "name": "Porcentaje de servicios reutilizables",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=30%",
+        "yellow": "10-30%",
+        "red": "<10%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "weights": {
+    "byLevel": {
+      "enterprise": {
+        "declarative": 0.55,
+        "structural": 0.43,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "domain": {
+        "declarative": 0.5,
+        "structural": 0.48,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "reference": {
+        "declarative": 0.49,
+        "structural": 0.49,
+        "metric": 0.02,
+        "antipatternPenalty": 0.01
+      },
+      "solution": {
+        "declarative": 0.4,
+        "structural": 0.55,
+        "metric": 0.05,
+        "antipatternPenalty": 0.01
+      }
+    }
+  }
+}

@@ -1,0 +1,503 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "todos-los-servicios-cualquier-canal",
+  "name": "Todos los Servicios, Cualquier Canal",
+  "version": "1.0.0",
+  "declaration": "Los servicios bancarios deben estar disponibles de forma consistente y completa a través de todos los canales digitales (web, móvil, APIs), garantizando experiencia sin restricciones funcionales por tipo de acceso o dispositivo.",
+  "description": "Diseñar la arquitectura de los servicios core bancarios de manera que expongan capacidades uniformes mediante federación y transmisión de eventos (event streaming), permitiendo la sincronización en tiempo real entre los diferentes canales.",
+  "scope": "Todas las nuevas soluciones tecnológicas y modernización de sistemas existentes.",
+  "benefits": [
+    "Experiencia consistente entre canales",
+    "Disponibilidad continua de servicios",
+    "Flexibilidad de acceso al cliente",
+    "Escalabilidad independiente por canal"
+  ],
+  "iso25010Attributes": [
+    "Funcionalidad",
+    "Disponibilidad",
+    "Usabilidad",
+    "Eficiencia de Desempeño"
+  ],
+  "applicability": {
+    "enterprise": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "domain": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "reference": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "solution": {
+      "applies": true,
+      "weight": 1.0
+    }
+  },
+  "criteria": [
+    {
+      "id": "OMN-D-01",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establece la omnicanalidad como lineamiento obligatorio para servicios al cliente?",
+      "rationale": "El mandato de omnicanalidad impulsa el diseño canal-agnóstico.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "OMN-D-02",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se define una estrategia API-first para desacoplar servicios de canales de consumo?",
+      "rationale": "API-first es el habilitador técnico de la omnicanalidad.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "OMN-S-01",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se identifica un catálogo de servicios de negocio expuestos de forma canal-agnóstica?",
+      "rationale": "Sin catálogo canal-agnóstico, cada canal reimplementa la lógica.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "contract"
+      ]
+    },
+    {
+      "id": "OMN-S-02",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establecen estándares de consistencia de experiencia entre canales?",
+      "rationale": "La consistencia requiere estándares organizacionales explícitos.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "OMN-D-03",
+      "dimension": "declarative",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se documentan las capacidades del dominio como servicios consumibles desde cualquier canal?",
+      "rationale": "La documentación canal-agnóstica evidencia diseño para omnicanalidad.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "OMN-S-03",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Los servicios del dominio exponen APIs canal-agnósticas sin lógica de canal embebida?",
+      "rationale": "La lógica de canal en el backend es el anti-patrón principal.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "OMN-S-04",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se gestiona la consistencia de datos y estados entre canales?",
+      "rationale": "La inconsistencia de estado entre canales frustra al usuario.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "OMN-D-04",
+      "dimension": "declarative",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se documentan patrones de API-first y omnicanalidad como guías reutilizables?",
+      "rationale": "Los patrones aceleran la adopción de omnicanalidad en soluciones.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "OMN-S-05",
+      "dimension": "structural",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se proveen templates de APIs y BFFs (Backend for Frontend) como activos reutilizables?",
+      "rationale": "Los BFFs son el patrón estándar para adaptar servicios a canales.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "pattern",
+        "contract"
+      ]
+    },
+    {
+      "id": "OMN-D-05",
+      "dimension": "declarative",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se documentan las decisiones de exposición de servicios hacia canales?",
+      "rationale": "Las decisiones explícitas de exposición evidencian diseño omnicanal.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "OMN-S-06",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Los servicios son consumibles desde múltiples canales sin modificación del backend?",
+      "rationale": "El backend canal-agnóstico es la prueba de fuego de omnicanalidad.",
+      "weight": 1.0,
+      "evaluation": "binary",
+      "scoringGuide": {
+        "0": "No se evidencia.",
+        "1": "Se evidencia en la documentación."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "OMN-S-07",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se implementa consistencia de estado y experiencia entre canales?",
+      "rationale": "La experiencia consistente es el beneficio tangible de omnicanalidad.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "OMN-S-08",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Los canales consumen servicios a través de APIs estandarizadas (no integraciones punto a punto)?",
+      "rationale": "Las integraciones punto a punto impiden la omnicanalidad.",
+      "weight": 1.0,
+      "evaluation": "binary",
+      "scoringGuide": {
+        "0": "No se evidencia.",
+        "1": "Se evidencia en la documentación."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    }
+  ],
+  "antipatterns": [
+    {
+      "id": "OMN-AP-01",
+      "description": "Lógica de negocio duplicada por canal (web tiene reglas distintas que móvil).",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "OMN-AP-02",
+      "description": "Funcionalidades disponibles solo en un canal sin justificación de negocio explícita.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "OMN-AP-03",
+      "description": "Backend acoplado al canal (endpoints específicos web-only/mobile-only con misma intención).",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "OMN-AP-04",
+      "description": "Sincronización entre canales por procesos batch nocturnos cuando deben ser tiempo real.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "id": "OMN-MX-01",
+      "name": "Paridad funcional de canales",
+      "unit": "% capacidades comunes",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=95%",
+        "yellow": "80-95%",
+        "red": "<80%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "OMN-MX-02",
+      "name": "Uptime de servicios por canal",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=99.9%",
+        "yellow": "99-99.9%",
+        "red": "<99%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "OMN-MX-03",
+      "name": "Tiempo de recuperación entre canales",
+      "unit": "minutos",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<5min",
+        "yellow": "5-30min",
+        "red": ">30min"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "OMN-MX-04",
+      "name": "Tasa de finalización de transacciones por canal",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=95%",
+        "yellow": "85-95%",
+        "red": "<85%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "OMN-MX-05",
+      "name": "Tiempo de cambio de canal sin pérdida de contexto",
+      "unit": "segundos",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<3s",
+        "yellow": "3-10s",
+        "red": ">10s"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "OMN-MX-06",
+      "name": "Capacidad de manejo de picos de tráfico",
+      "unit": "x baseline",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=5x",
+        "yellow": "2-5x",
+        "red": "<2x"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "weights": {
+    "byLevel": {
+      "enterprise": {
+        "declarative": 0.55,
+        "structural": 0.43,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "domain": {
+        "declarative": 0.5,
+        "structural": 0.48,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "reference": {
+        "declarative": 0.49,
+        "structural": 0.49,
+        "metric": 0.02,
+        "antipatternPenalty": 0.01
+      },
+      "solution": {
+        "declarative": 0.4,
+        "structural": 0.55,
+        "metric": 0.05,
+        "antipatternPenalty": 0.01
+      }
+    }
+  }
+}

@@ -1,0 +1,559 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "centrado-en-datos",
+  "name": "Centrado en Datos",
+  "version": "1.0.0",
+  "declaration": "La información y los datos deben ser el elemento rector y fundamental de toda la estrategia arquitectónica, priorizando su calidad y capacidad predictiva.",
+  "description": "La información y los datos deben arquitectarse siguiendo principios claros de gobernanza y estándares técnicos consistentes que garanticen su interoperabilidad, reutilización y capacidad para generar análisis predictivos y valor empresarial sostenible.",
+  "scope": "Todas las nuevas soluciones tecnológicas y modernización de sistemas existentes.",
+  "benefits": [
+    "Mejora en la toma de decisiones basada en datos",
+    "Mejor calidad de información",
+    "Reducción de silos de información",
+    "Cumplimiento normativo y gobernanza",
+    "Aceleración de capacidades analíticas"
+  ],
+  "iso25010Attributes": [
+    "Eficiencia de Desempeño",
+    "Confiabilidad",
+    "Interoperabilidad",
+    "Seguridad",
+    "Mantenibilidad"
+  ],
+  "applicability": {
+    "enterprise": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "domain": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "reference": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "solution": {
+      "applies": true,
+      "weight": 1.0
+    }
+  },
+  "criteria": [
+    {
+      "id": "DAT-D-01",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establece el dato como activo estratégico con políticas de gobernanza organizacional?",
+      "rationale": "La gobernanza de datos requiere mandato a nivel organizacional.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "DAT-D-02",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se define una política de calidad de datos, linaje y master data management?",
+      "rationale": "Sin política de calidad, los datos no pueden ser confiables para análisis.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "DAT-S-01",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se identifica un modelo de dominio de datos organizacional con ownership definido?",
+      "rationale": "El ownership claro es prerrequisito para gobernanza efectiva.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "diagram",
+        "section"
+      ]
+    },
+    {
+      "id": "DAT-S-02",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establecen estándares de interoperabilidad y formatos de intercambio de datos?",
+      "rationale": "Sin estándares, la integración de datos entre dominios es caótica.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "policy",
+        "contract"
+      ]
+    },
+    {
+      "id": "DAT-D-03",
+      "dimension": "declarative",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se documentan las decisiones sobre el modelo de datos del dominio y su gobernanza?",
+      "rationale": "El modelo de datos del dominio es la pieza central de una arquitectura centrada en datos.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "DAT-S-03",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se define el ownership de las entidades de datos del dominio con responsables claros?",
+      "rationale": "Sin dueño claro, las entidades de datos se degradan.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "DAT-S-04",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se implementan políticas de calidad de datos (validación, completitud, consistencia) en el dominio?",
+      "rationale": "La calidad de datos se implementa donde se producen y consumen.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "DAT-D-04",
+      "dimension": "declarative",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se documentan patrones de acceso, transformación y gobierno de datos como activos reutilizables?",
+      "rationale": "Los patrones de datos aceleran la adopción de gobernanza en soluciones.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "DAT-S-05",
+      "dimension": "structural",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se proveen modelos de datos canónicos y schemas reutilizables?",
+      "rationale": "Los schemas canónicos son la base de interoperabilidad.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "contract",
+        "pattern"
+      ]
+    },
+    {
+      "id": "DAT-S-06",
+      "dimension": "structural",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se incluyen patrones de linaje y trazabilidad de datos en los blueprints?",
+      "rationale": "El linaje es requisito para auditoría y gobernanza.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "DAT-D-05",
+      "dimension": "declarative",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se documenta el modelo de datos de la solución con ownership y ciclo de vida?",
+      "rationale": "El modelo de datos documentado es evidencia de diseño centrado en datos.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "DAT-S-07",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Cada servicio tiene dominio de datos claro sin acoplamiento directo a datos de otros servicios?",
+      "rationale": "El acoplamiento de datos viola tanto este principio como el de desacoplamiento.",
+      "weight": 1.0,
+      "evaluation": "binary",
+      "scoringGuide": {
+        "0": "No se evidencia.",
+        "1": "Se evidencia en la documentación."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "DAT-S-08",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se implementa linaje y trazabilidad de los datos procesados?",
+      "rationale": "Sin linaje, los datos pierden confiabilidad para análisis.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "DAT-S-09",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se aplican controles de calidad de datos (validación, sanitización) en los puntos de entrada?",
+      "rationale": "La calidad se garantiza donde los datos ingresan al sistema.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    }
+  ],
+  "antipatterns": [
+    {
+      "id": "DAT-AP-01",
+      "description": "Misma entidad maestra duplicada como fuente de verdad en más de un sistema.",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "DAT-AP-02",
+      "description": "Acceso directo a la base operacional para consumos analíticos / reporting.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "DAT-AP-03",
+      "description": "Datos PII/Confidenciales sin clasificación ni controles documentados.",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "DAT-AP-04",
+      "description": "Esquemas de datos sin versionado ni política de retrocompatibilidad.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "DAT-AP-05",
+      "description": "Silos analíticos: cada equipo construye su propio data mart sin integración corporativa.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "id": "DAT-MX-01",
+      "name": "Tiempo de generación de reportes",
+      "unit": "minutos",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<5min",
+        "yellow": "5-30min",
+        "red": ">30min"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "DAT-MX-02",
+      "name": "Precisión en predicciones",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=85%",
+        "yellow": "70-85%",
+        "red": "<70%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "DAT-MX-03",
+      "name": "Tasa de errores en datos",
+      "unit": "%",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<1%",
+        "yellow": "1-5%",
+        "red": ">5%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "DAT-MX-04",
+      "name": "Tiempo de integración de nuevas fuentes",
+      "unit": "días",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<5d",
+        "yellow": "5-20d",
+        "red": ">20d"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "DAT-MX-05",
+      "name": "Reutilización de datasets",
+      "unit": "% datasets reutilizados",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=40%",
+        "yellow": "20-40%",
+        "red": "<20%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "DAT-MX-06",
+      "name": "Cumplimiento de políticas de privacidad",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": "100%",
+        "yellow": "95-99%",
+        "red": "<95%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "DAT-MX-07",
+      "name": "Disponibilidad de datos en tiempo real",
+      "unit": "segundos de latencia",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<10s",
+        "yellow": "10-60s",
+        "red": ">60s"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "weights": {
+    "byLevel": {
+      "enterprise": {
+        "declarative": 0.55,
+        "structural": 0.43,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "domain": {
+        "declarative": 0.5,
+        "structural": 0.48,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "reference": {
+        "declarative": 0.49,
+        "structural": 0.49,
+        "metric": 0.02,
+        "antipatternPenalty": 0.01
+      },
+      "solution": {
+        "declarative": 0.4,
+        "structural": 0.55,
+        "metric": 0.05,
+        "antipatternPenalty": 0.01
+      }
+    }
+  }
+}

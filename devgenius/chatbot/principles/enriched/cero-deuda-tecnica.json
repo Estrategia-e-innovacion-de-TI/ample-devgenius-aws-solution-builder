@@ -1,0 +1,535 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "cero-deuda-tecnica",
+  "name": "Cero Deuda Técnica",
+  "version": "1.0.0",
+  "declaration": "Las arquitecturas y soluciones deben mantenerse libres de deuda técnica mediante prácticas proactivas de calidad garantizando la sostenibilidad.",
+  "description": "Implementar estrategias preventivas y correctivas para eliminar la deuda técnica.",
+  "scope": "Todas las nuevas soluciones tecnológicas y modernización de sistemas existentes.",
+  "benefits": [
+    "Reducción de costos de mantenimiento",
+    "Aceleración en el desarrollo de nuevas funcionalidades",
+    "Mejora en la estabilidad del sistema",
+    "Mejora en calidad y estabilidad"
+  ],
+  "iso25010Attributes": [
+    "Eficiencia de Desempeño",
+    "Mantenibilidad",
+    "Confiabilidad",
+    "Usabilidad"
+  ],
+  "applicability": {
+    "enterprise": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "domain": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "reference": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "solution": {
+      "applies": true,
+      "weight": 1.0
+    }
+  },
+  "criteria": [
+    {
+      "id": "CDT-D-01",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establece una política organizacional de cero deuda técnica con procesos de identificación y remediación?",
+      "rationale": "La política organizacional es la base para que los equipos prioricen la calidad.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "CDT-D-02",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se definen estándares de calidad de código y arquitectura (análisis estático, revisiones, gates)?",
+      "rationale": "Los estándares objetivos permiten medir y hacer cumplir la calidad.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "CDT-S-01",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establece un inventario de deuda técnica con priorización y planes de remediación?",
+      "rationale": "Sin inventario, la deuda técnica es invisible y crece sin control.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "CDT-S-02",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se definen procesos de deprecación y sunset de tecnologías obsoletas?",
+      "rationale": "Las tecnologías obsoletas son la mayor fuente de deuda técnica acumulada.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "policy",
+        "section"
+      ]
+    },
+    {
+      "id": "CDT-D-03",
+      "dimension": "declarative",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se documentan las decisiones técnicas del dominio con análisis de trade-offs y deuda aceptada?",
+      "rationale": "La deuda consciente y documentada es el primer paso para gestionarla.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "CDT-S-03",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Los componentes del dominio cumplen los estándares de calidad (convenciones, pruebas, documentación)?",
+      "rationale": "El cumplimiento de estándares es la evidencia de cero deuda.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "CDT-S-04",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se identifican y planifican las remediaciones de deuda técnica existente en el dominio?",
+      "rationale": "La planificación de remediación demuestra gestión activa de la deuda.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "CDT-D-04",
+      "dimension": "declarative",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se documentan guías de calidad y antipatrones a evitar como activos reutilizables?",
+      "rationale": "Las guías de antipatrones previenen la acumulación de deuda en soluciones.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "CDT-S-05",
+      "dimension": "structural",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Los blueprints incluyen gates de calidad y criterios de aceptación arquitectónica?",
+      "rationale": "Los gates en blueprints previenen la introducción de deuda desde el diseño.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "CDT-D-05",
+      "dimension": "declarative",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se documentan los compromisos técnicos (trade-offs) y la deuda asumida con plan de pago?",
+      "rationale": "La deuda explícita con plan de pago es la única deuda aceptable.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "CDT-S-06",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿La solución cumple los estándares de calidad de código (cobertura, complejidad, duplicación)?",
+      "rationale": "Las métricas de código son la evidencia objetiva de ausencia de deuda.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "CDT-S-07",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿No existen dependencias obsoletas o sin soporte en la solución?",
+      "rationale": "Las dependencias sin soporte son deuda técnica que genera riesgo de seguridad.",
+      "weight": 1.0,
+      "evaluation": "binary",
+      "scoringGuide": {
+        "0": "No se evidencia.",
+        "1": "Se evidencia en la documentación."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "CDT-S-08",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se mantiene documentación técnica actualizada y coherente con la implementación?",
+      "rationale": "La documentación desactualizada es deuda técnica de conocimiento.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    }
+  ],
+  "antipatterns": [
+    {
+      "id": "CDT-AP-01",
+      "description": "Ausencia de pipeline CI/CD con quality gates.",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "CDT-AP-02",
+      "description": "Cobertura de pruebas <50% sin plan de remediación.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "CDT-AP-03",
+      "description": "Frameworks/lenguajes fuera de soporte oficial documentados como en uso.",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "CDT-AP-04",
+      "description": "Documentación técnica desactualizada o ausente para componentes críticos.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "CDT-AP-05",
+      "description": "Código duplicado significativo (>15%) sin plan de refactor.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "id": "CDT-MX-01",
+      "name": "Tiempo de respuesta",
+      "unit": "ms",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<200ms",
+        "yellow": "200-1000ms",
+        "red": ">1000ms"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "CDT-MX-02",
+      "name": "Complejidad ciclomática",
+      "unit": "promedio",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<10",
+        "yellow": "10-20",
+        "red": ">20"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "CDT-MX-03",
+      "name": "Porcentaje de código duplicado",
+      "unit": "%",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<3%",
+        "yellow": "3-10%",
+        "red": ">10%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "CDT-MX-04",
+      "name": "Cobertura de pruebas",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=80%",
+        "yellow": "60-80%",
+        "red": "<60%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "CDT-MX-05",
+      "name": "MTBF",
+      "unit": "horas",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">720h",
+        "yellow": "168-720h",
+        "red": "<168h"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "CDT-MX-06",
+      "name": "Tasa de defectos en producción",
+      "unit": "defectos/release",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<2",
+        "yellow": "2-5",
+        "red": ">5"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "CDT-MX-07",
+      "name": "Cobertura de documentación técnica",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=80%",
+        "yellow": "50-80%",
+        "red": "<50%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "weights": {
+    "byLevel": {
+      "enterprise": {
+        "declarative": 0.55,
+        "structural": 0.43,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "reference": {
+        "declarative": 0.49,
+        "structural": 0.49,
+        "metric": 0.02,
+        "antipatternPenalty": 0.01
+      },
+      "solution": {
+        "declarative": 0.4,
+        "structural": 0.55,
+        "metric": 0.05,
+        "antipatternPenalty": 0.01
+      },
+      "domain": {
+        "declarative": 0.5,
+        "structural": 0.48,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      }
+    }
+  }
+}

@@ -1,0 +1,492 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "simple-confiable-accesible",
+  "name": "Simple, Confiable y Accesible",
+  "version": "1.0.0",
+  "declaration": "Los sistemas deben arquitectarse con interfaces simples, confiables y universalmente accesibles, priorizando la experiencia del usuario mediante patrones de diseño (design system), mapeo de recorridos de usuario (user journey mapping) y consistencia de marca en todos los puntos de contacto.",
+  "description": "Arquitectura centrada en el usuario que prioriza experiencias fluidas y accesibles, mediante sistemas de diseño, componentes optimizados, micro-frontends adaptativos, APIs orientadas a intenciones y mejoras progresivas para garantizar inclusión universal.",
+  "scope": "Todas las nuevas soluciones tecnológicas y modernización de sistemas existentes.",
+  "benefits": [
+    "Mejora en usabilidad y adopción",
+    "Accesibilidad Universal",
+    "Reducción de errores de usuario",
+    "Escalabilidad de interfaces de usuario"
+  ],
+  "iso25010Attributes": [
+    "Usabilidad",
+    "Accesibilidad",
+    "Confiabilidad",
+    "Reusabilidad"
+  ],
+  "applicability": {
+    "enterprise": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "domain": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "reference": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "solution": {
+      "applies": true,
+      "weight": 1.0
+    }
+  },
+  "criteria": [
+    {
+      "id": "SCA-D-01",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establecen lineamientos de simplicidad, confiabilidad y accesibilidad como principios de diseño?",
+      "rationale": "Los lineamientos explícitos priorizan la experiencia del usuario en toda la organización.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "SCA-D-02",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se definen estándares de disponibilidad (SLOs) y experiencia de usuario para los servicios?",
+      "rationale": "Los SLOs cuantifican la confiabilidad esperada y permiten medición.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "SCA-S-01",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establecen métricas de confiabilidad (disponibilidad, latencia, error rate) como estándares transversales?",
+      "rationale": "Las métricas transversales permiten comparar y mejorar la confiabilidad.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "SCA-S-02",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se definen estándares de accesibilidad (WCAG, diseño inclusivo) para todas las interfaces?",
+      "rationale": "La accesibilidad requiere mandato organizacional para ser adoptada.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "policy",
+        "section"
+      ]
+    },
+    {
+      "id": "SCA-D-03",
+      "dimension": "declarative",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se documentan las decisiones de diseño priorizando la simplicidad sobre la complejidad?",
+      "rationale": "La simplicidad consciente evita la sobreingeniería.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "SCA-S-03",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Los componentes del dominio tienen SLOs definidos (disponibilidad, latencia)?",
+      "rationale": "Los SLOs por componente permiten gestionar la confiabilidad proactivamente.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "SCA-S-04",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿El diseño del dominio evita complejidad innecesaria (mínimo de componentes e integraciones)?",
+      "rationale": "Cada componente e integración adicional es un punto de falla potencial.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "SCA-D-04",
+      "dimension": "declarative",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se documentan patrones de resiliencia y simplicidad como guías reutilizables?",
+      "rationale": "Los patrones de resiliencia previenen reinvención en cada solución.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "SCA-S-05",
+      "dimension": "structural",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se proveen blueprints con patrones de alta disponibilidad (retry, fallback, degradación graceful)?",
+      "rationale": "Los blueprints con resiliencia incorporada elevan el piso de calidad.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "pattern",
+        "section"
+      ]
+    },
+    {
+      "id": "SCA-D-05",
+      "dimension": "declarative",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se documentan las decisiones de diseño que priorizan simplicidad y confiabilidad?",
+      "rationale": "Las decisiones explícitas de simplicidad evidencian intencionalidad.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "SCA-S-06",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿La solución implementa patrones de resiliencia (retry, circuit breaker, fallback, degradación)?",
+      "rationale": "Los patrones de resiliencia son la materialización de confiabilidad.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "SCA-S-07",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿La solución cumple los SLOs de disponibilidad y latencia definidos?",
+      "rationale": "El cumplimiento de SLOs es la evidencia objetiva de confiabilidad.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "SCA-S-08",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Las interfaces cumplen estándares de accesibilidad y usabilidad?",
+      "rationale": "La accesibilidad es un requisito no-negociable de inclusión.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    }
+  ],
+  "antipatterns": [
+    {
+      "id": "SCA-AP-01",
+      "description": "UI propia que ignora el design system corporativo.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "SCA-AP-02",
+      "description": "Sin verificación de accesibilidad WCAG documentada.",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "SCA-AP-03",
+      "description": "APIs que filtran modelo interno (cambio de DB rompe contratos públicos).",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "SCA-AP-04",
+      "description": "Inconsistencias visuales/funcionales entre canales del mismo producto.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "id": "SCA-MX-01",
+      "name": "Tasa de finalización de tareas",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=90%",
+        "yellow": "75-90%",
+        "red": "<75%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "SCA-MX-02",
+      "name": "Tiempo promedio de completar user journey",
+      "unit": "segundos",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "según baseline",
+        "yellow": "10-30% sobre baseline",
+        "red": ">30% sobre baseline"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "SCA-MX-03",
+      "name": "Tasa de errores de usuario",
+      "unit": "%",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<2%",
+        "yellow": "2-10%",
+        "red": ">10%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "SCA-MX-04",
+      "name": "Tiempo de implementación de nuevas interfaces",
+      "unit": "días",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<10d",
+        "yellow": "10-30d",
+        "red": ">30d"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "SCA-MX-05",
+      "name": "Reutilización de componentes UI",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=70%",
+        "yellow": "40-70%",
+        "red": "<40%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "weights": {
+    "byLevel": {
+      "enterprise": {
+        "declarative": 0.55,
+        "structural": 0.43,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "reference": {
+        "declarative": 0.49,
+        "structural": 0.49,
+        "metric": 0.02,
+        "antipatternPenalty": 0.01
+      },
+      "solution": {
+        "declarative": 0.4,
+        "structural": 0.55,
+        "metric": 0.05,
+        "antipatternPenalty": 0.01
+      },
+      "domain": {
+        "declarative": 0.5,
+        "structural": 0.48,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      }
+    }
+  }
+}

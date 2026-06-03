@@ -1,0 +1,529 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "automatizacion-desde-el-diseno",
+  "name": "Automatización desde el Diseño",
+  "version": "1.0.0",
+  "declaration": "Los sistemas deben incorporar capacidades de automatización nativas desde el diseño, incluyendo bibliotecas de workflows, RPA y mecanismos de auto-recuperación que garanticen operación autónoma y recuperación rápida ante fallos.",
+  "description": "Diseñar una arquitectura que incorpore máquinas de estados para la gestión de flujos de trabajo, event sourcing para garantizar la auditabilidad y motores de decisión con reglas predefinidas que habiliten auto-recuperación (auto-healing) y operación autónoma, minimizando o eliminando la intervención manual.",
+  "scope": "Todas las nuevas soluciones tecnológicas y modernización de sistemas existentes.",
+  "benefits": [
+    "Reducción de intervención manual",
+    "Recuperación automática ante fallos",
+    "Operación continua sin supervisión",
+    "Escalabilidad de operaciones"
+  ],
+  "iso25010Attributes": [
+    "Eficiencia de Desempeño",
+    "Confiabilidad",
+    "Disponibilidad"
+  ],
+  "applicability": {
+    "enterprise": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "domain": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "reference": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "solution": {
+      "applies": true,
+      "weight": 1.0
+    }
+  },
+  "criteria": [
+    {
+      "id": "AUT-D-01",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establece la automatización (CI/CD, IaC, testing, observabilidad) como estándar obligatorio?",
+      "rationale": "La automatización como norma organizacional es la base de adherencia.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "AUT-D-02",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se define una política de observabilidad y monitoreo como requisito desde el diseño?",
+      "rationale": "Observabilidad by-design requiere mandato organizacional explícito.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "AUT-S-01",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se identifican las plataformas de automatización disponibles (CI/CD, IaC, observabilidad)?",
+      "rationale": "Sin catálogo de capacidades, los equipos no pueden adoptar la automatización.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "AUT-S-02",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se definen estándares de calidad automatizada (cobertura, análisis estático, gates)?",
+      "rationale": "Los gates de calidad automáticos previenen la degradación.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "AUT-D-03",
+      "dimension": "declarative",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se documentan las decisiones de automatización específicas del dominio (pipelines, estrategia de pruebas)?",
+      "rationale": "Cada dominio debe adaptar la estrategia de automatización a su contexto.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "AUT-S-03",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Los componentes del dominio incluyen estrategia de pruebas automatizadas (unitarias, integración, E2E)?",
+      "rationale": "La automatización de pruebas es el mínimo viable de automatización.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "AUT-S-04",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se define infraestructura como código (IaC) para los recursos del dominio?",
+      "rationale": "IaC es el estándar para reproducibilidad y automatización de entornos.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "AUT-D-04",
+      "dimension": "declarative",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se documentan pipelines de referencia y plantillas de automatización como activos reutilizables?",
+      "rationale": "Los templates de CI/CD aceleran la adopción en las soluciones.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "AUT-S-05",
+      "dimension": "structural",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se proveen templates de IaC, CI/CD y testing listos para consumo?",
+      "rationale": "Artefactos consumibles reducen la barrera de entrada a la automatización.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "pattern",
+        "section"
+      ]
+    },
+    {
+      "id": "AUT-S-06",
+      "dimension": "structural",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se incluyen dashboards y alertas de observabilidad como parte del blueprint?",
+      "rationale": "La observabilidad pre-configurada es un acelerador clave.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "AUT-D-05",
+      "dimension": "declarative",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se documentan las decisiones de automatización específicas de la solución?",
+      "rationale": "Las decisiones explícitas de automatización evidencian intencionalidad de diseño.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "AUT-S-07",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Existe un pipeline CI/CD funcional con gates de calidad automatizados?",
+      "rationale": "El pipeline es la materialización mínima del principio.",
+      "weight": 1.0,
+      "evaluation": "binary",
+      "scoringGuide": {
+        "0": "No se evidencia.",
+        "1": "Se evidencia en la documentación."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "AUT-S-08",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿La infraestructura se gestiona como código (IaC) sin intervención manual?",
+      "rationale": "La intervención manual contradice la automatización desde el diseño.",
+      "weight": 1.0,
+      "evaluation": "binary",
+      "scoringGuide": {
+        "0": "No se evidencia.",
+        "1": "Se evidencia en la documentación."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "AUT-S-09",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se implementa observabilidad (logs estructurados, métricas, trazas distribuidas) desde el diseño?",
+      "rationale": "La observabilidad es la capacidad de auto-diagnóstico del sistema.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "AUT-S-10",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se implementan mecanismos de auto-recuperación (auto-healing, retry, compensación)?",
+      "rationale": "El principio exige operación autónoma con recuperación automática ante fallos.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    }
+  ],
+  "antipatterns": [
+    {
+      "id": "AUT-AP-01",
+      "description": "Procesos críticos que requieren intervención manual obligatoria documentada como parte del flujo normal.",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AUT-AP-02",
+      "description": "Ausencia total de mecanismos de retry/circuit breaker para integraciones externas.",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AUT-AP-03",
+      "description": "Despliegues/configuración manual (sin IaC ni pipelines).",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AUT-AP-04",
+      "description": "Uso de scripts ad-hoc no versionados como mecanismo de recuperación.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "id": "AUT-MX-01",
+      "name": "Porcentaje de procesos automatizados",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=80%",
+        "yellow": "50-80%",
+        "red": "<50%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AUT-MX-02",
+      "name": "Tiempo de recuperación (MTTR)",
+      "unit": "minutos",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<15min",
+        "yellow": "15-60min",
+        "red": ">60min"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AUT-MX-03",
+      "name": "Tasa de recuperación exitosa",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=95%",
+        "yellow": "80-95%",
+        "red": "<80%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AUT-MX-04",
+      "name": "Disponibilidad por transacción",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=99.9%",
+        "yellow": "99-99.9%",
+        "red": "<99%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "AUT-MX-05",
+      "name": "Tiempo de escalamiento automático",
+      "unit": "segundos",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<60s",
+        "yellow": "60-180s",
+        "red": ">180s"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "weights": {
+    "byLevel": {
+      "enterprise": {
+        "declarative": 0.55,
+        "structural": 0.43,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "domain": {
+        "declarative": 0.5,
+        "structural": 0.48,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "reference": {
+        "declarative": 0.49,
+        "structural": 0.49,
+        "metric": 0.02,
+        "antipatternPenalty": 0.01
+      },
+      "solution": {
+        "declarative": 0.4,
+        "structural": 0.55,
+        "metric": 0.05,
+        "antipatternPenalty": 0.01
+      }
+    }
+  }
+}

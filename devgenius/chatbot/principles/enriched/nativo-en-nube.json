@@ -1,0 +1,531 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "nativo-en-nube",
+  "name": "Nativo en Nube",
+  "version": "1.0.0",
+  "declaration": "Las soluciones de tecnología deben diseñarse desde su concepción para operar de manera nativa en entornos de nube, aprovechando completamente las capacidades y beneficios del cloud computing.",
+  "description": "Este principio establece que todas las arquitecturas de soluciones tecnológicas deben incorporar patrones, prácticas y tecnologías que permitan el despliegue, escalamiento y operación óptima en plataformas de nube pública, privada o híbrida.",
+  "scope": "Todas las nuevas soluciones tecnológicas y modernización de sistemas existentes.",
+  "benefits": [
+    "Mayor escalabilidad y elasticidad",
+    "Reducción de costos",
+    "Mejora en disponibilidad y resiliencia",
+    "Aceleración del tiempo de comercialización"
+  ],
+  "iso25010Attributes": [
+    "Eficiencia de Desempeño",
+    "Confiabilidad",
+    "Mantenibilidad"
+  ],
+  "applicability": {
+    "enterprise": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "domain": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "reference": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "solution": {
+      "applies": true,
+      "weight": 1.0
+    }
+  },
+  "criteria": [
+    {
+      "id": "NUB-D-01",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establece cloud-native como el estándar de despliegue para nuevos desarrollos?",
+      "rationale": "La directriz cloud-first es la base de adopción organizacional.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "NUB-D-02",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se define una estrategia de adopción de servicios gestionados sobre infraestructura autooperada?",
+      "rationale": "Los servicios gestionados reducen carga operativa y mejoran resiliencia.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "NUB-S-01",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se identifican las plataformas cloud y servicios gestionados disponibles para los equipos?",
+      "rationale": "Sin catálogo de plataformas, los equipos no pueden adoptar cloud-native.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "NUB-S-02",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se definen estándares de empaquetamiento (contenedores, serverless) y orquestación?",
+      "rationale": "Los estándares de empaquetamiento aseguran consistencia operativa.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "policy",
+        "section"
+      ]
+    },
+    {
+      "id": "NUB-D-03",
+      "dimension": "declarative",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se documentan las decisiones de despliegue cloud-native para los componentes del dominio?",
+      "rationale": "Las decisiones explícitas de cloud-native evidencian intencionalidad.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "NUB-S-03",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Los componentes del dominio se diseñan para escalar horizontalmente de forma elástica?",
+      "rationale": "El escalamiento elástico es una capacidad fundamental de cloud-native.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "NUB-S-04",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se utilizan servicios gestionados sobre infraestructura autooperada cuando están disponibles?",
+      "rationale": "Preferir servicios gestionados reduce TCO y complejidad operativa.",
+      "weight": 1.0,
+      "evaluation": "binary",
+      "scoringGuide": {
+        "0": "No se evidencia.",
+        "1": "Se evidencia en la documentación."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "NUB-D-04",
+      "dimension": "declarative",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se documentan patrones cloud-native (12-factor, contenedores, serverless) como guías reutilizables?",
+      "rationale": "Los patrones documentados aceleran la adopción en soluciones.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "NUB-S-05",
+      "dimension": "structural",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se proveen plantillas de despliegue cloud-native (Dockerfiles, Helm charts, IaC) listas para usar?",
+      "rationale": "Las plantillas listas reducen la barrera de entrada a cloud-native.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "pattern",
+        "section"
+      ]
+    },
+    {
+      "id": "NUB-D-05",
+      "dimension": "declarative",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se documentan las decisiones de infraestructura cloud con justificación?",
+      "rationale": "La justificación explícita evidencia diseño cloud-native intencional.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "NUB-S-06",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Los servicios están empaquetados en contenedores o funciones serverless?",
+      "rationale": "El empaquetamiento cloud-native es el mínimo viable del principio.",
+      "weight": 1.0,
+      "evaluation": "binary",
+      "scoringGuide": {
+        "0": "No se evidencia.",
+        "1": "Se evidencia en la documentación."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "NUB-S-07",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿La solución escala horizontal y elásticamente según demanda?",
+      "rationale": "El escalamiento elástico es el beneficio tangible de cloud-native.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "NUB-S-08",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se utilizan servicios gestionados (bases de datos, colas, caché) en lugar de autooperados?",
+      "rationale": "Los servicios gestionados maximizan el aprovechamiento del cloud.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    }
+  ],
+  "antipatterns": [
+    {
+      "id": "NUB-AP-01",
+      "description": "Estado de aplicación en disco local del nodo (no portable, no escalable).",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "NUB-AP-02",
+      "description": "Configuración hardcodeada en el código o imagen.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "NUB-AP-03",
+      "description": "Infraestructura creada manualmente desde la consola del proveedor cloud.",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "NUB-AP-04",
+      "description": "Despliegue mono-AZ sin justificación.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "NUB-AP-05",
+      "description": "Lift & shift de monolito sin plan de modernización.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "id": "NUB-MX-01",
+      "name": "Tiempo de escalamiento",
+      "unit": "segundos",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<60s",
+        "yellow": "60-180s",
+        "red": ">180s"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "NUB-MX-02",
+      "name": "Costo por transacción",
+      "unit": "USD",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "según baseline",
+        "yellow": "10-25% sobre baseline",
+        "red": ">25% sobre baseline"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "NUB-MX-03",
+      "name": "Utilización de recursos (CPU/Memoria)",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": "60-80%",
+        "yellow": "40-60% u 80-90%",
+        "red": "<40% o >90%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "NUB-MX-04",
+      "name": "Uptime del servicio",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=99.95%",
+        "yellow": "99.5-99.95%",
+        "red": "<99.5%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "NUB-MX-05",
+      "name": "MTTR",
+      "unit": "minutos",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<15min",
+        "yellow": "15-60min",
+        "red": ">60min"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "NUB-MX-06",
+      "name": "Tiempo de despliegue",
+      "unit": "minutos",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<10min",
+        "yellow": "10-30min",
+        "red": ">30min"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "NUB-MX-07",
+      "name": "Frecuencia de releases",
+      "unit": "releases/semana",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=2",
+        "yellow": "0.5-2",
+        "red": "<0.5"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "weights": {
+    "byLevel": {
+      "enterprise": {
+        "declarative": 0.55,
+        "structural": 0.43,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "reference": {
+        "declarative": 0.49,
+        "structural": 0.49,
+        "metric": 0.02,
+        "antipatternPenalty": 0.01
+      },
+      "solution": {
+        "declarative": 0.4,
+        "structural": 0.55,
+        "metric": 0.05,
+        "antipatternPenalty": 0.01
+      },
+      "domain": {
+        "declarative": 0.5,
+        "structural": 0.48,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      }
+    }
+  }
+}

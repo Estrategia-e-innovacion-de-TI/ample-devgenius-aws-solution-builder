@@ -1,4 +1,4 @@
-# DevGenius - Agente de Arquitectura AWS (CLI)
+# ArqGenius - Agente de Arquitectura AWS (CLI)
 
 Agente conversacional de Arquitectura TI potenciado por **AWS Bedrock** (Claude 4.5 Sonnet) orquestado con **LangGraph**. Se ejecuta localmente como aplicación de consola (CLI).
 

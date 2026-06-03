@@ -1,7 +1,10 @@
 """
-Utilidades compartidas: extracción de código de markdown, conversión DSL a diagrama.
+Utilidades compartidas: extracción de código de markdown, conversión DSL a diagrama,
+carga de archivos externos.
 """
+import os
 import re
+import glob
 import zlib
 import base64
 import requests
@@ -86,3 +89,21 @@ def convert_xml_to_html(xml_string: str) -> str:
         '<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>'
     )
     return html_output
+
+
+def load_markdown_files(directory: str) -> str:
+    """
+    Carga todos los archivos .md de un directorio y retorna su contenido concatenado.
+
+    Args:
+        directory: Ruta absoluta al directorio con archivos .md.
+
+    Returns:
+        Texto consolidado con el contenido de todos los archivos separados por líneas.
+    """
+    content_parts = []
+    md_files = sorted(glob.glob(os.path.join(directory, "*.md")))
+    for filepath in md_files:
+        with open(filepath, "r", encoding="utf-8") as f:
+            content_parts.append(f.read().strip())
+    return "\n\n---\n".join(content_parts)

@@ -1,0 +1,449 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "hacer-menos-reusar-comprar-construir",
+  "name": "Hacer Menos (Reusar-Comprar-Construir)",
+  "version": "1.0.0",
+  "declaration": "Las decisiones arquitectónicas deben seguir la jerarquía estratégica: reutilizar componentes existentes para lograr eficiencia, adquirir soluciones comerciales (COTS) para funcionalidades estándar y construir únicamente aquellas capacidades que generen una ventaja competitiva diferenciadora en el mercado bancario, siempre que el caso de negocio lo justifique.",
+  "description": "Tomar decisiones de arquitectura considerando el tiempo de salida al mercado (time-to-market), el costo total de propiedad (TCO) y la diferenciación estratégica.",
+  "scope": "Todas las nuevas soluciones tecnológicas y modernización de sistemas existentes.",
+  "benefits": [
+    "Reducción de costos de desarrollo",
+    "Aceleración de time-to-market",
+    "Optimización de recursos técnicos",
+    "Mejora en calidad y estabilidad"
+  ],
+  "iso25010Attributes": [
+    "Eficiencia de Desempeño",
+    "Mantenibilidad",
+    "Disponibilidad"
+  ],
+  "applicability": {
+    "enterprise": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "domain": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "reference": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "solution": {
+      "applies": true,
+      "weight": 1.0
+    }
+  },
+  "criteria": [
+    {
+      "id": "HCM-D-01",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establece la jerarquía reusar → comprar → construir como principio obligatorio de decisión?",
+      "rationale": "La jerarquía explícita guía las decisiones de inversión tecnológica.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "HCM-D-02",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se define un proceso de evaluación build/buy/reuse con criterios claros (TCO, time-to-market)?",
+      "rationale": "Sin proceso formal, las decisiones son ad-hoc y sesgadas hacia construir.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "HCM-S-01",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se mantiene un catálogo de activos reutilizables (servicios, componentes, APIs) accesible?",
+      "rationale": "Sin catálogo, los equipos no saben qué pueden reutilizar.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "HCM-S-02",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establecen mecanismos para descubrir y compartir activos reutilizables entre equipos?",
+      "rationale": "La descubribilidad es prerequisito de la reutilización.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "HCM-D-03",
+      "dimension": "declarative",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se documenta el análisis build/buy/reuse para los componentes principales del dominio?",
+      "rationale": "Cada componente debería tener justificación de por qué se construye vs reutiliza.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "HCM-S-03",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Los componentes reutilizables del dominio están publicados y documentados para consumo externo?",
+      "rationale": "Un componente no publicado no es reutilizable fuera de su equipo.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "HCM-S-04",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se reutilizan servicios o capacidades existentes de otros dominios donde es posible?",
+      "rationale": "La reutilización inter-dominio es la prueba de fuego del principio.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "HCM-D-04",
+      "dimension": "declarative",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se documentan patrones y guías de reutilización como activos de referencia?",
+      "rationale": "Las guías de reutilización facilitan la adopción del principio.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "HCM-S-05",
+      "dimension": "structural",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se proveen componentes prefabricados (templates, librerías, servicios compartidos) listos para usar?",
+      "rationale": "Los componentes listos reducen la tentación de reconstruir.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "pattern",
+        "contract"
+      ]
+    },
+    {
+      "id": "HCM-D-05",
+      "dimension": "declarative",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se justifica cada decisión de construir vs reusar vs comprar con análisis documentado?",
+      "rationale": "La justificación explícita previene la construcción innecesaria.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "HCM-S-06",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿La solución reutiliza servicios y componentes existentes del catálogo organizacional?",
+      "rationale": "La reutilización efectiva es la materialización del principio.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "HCM-S-07",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se evita la duplicación de funcionalidad ya disponible en otros servicios de la organización?",
+      "rationale": "La duplicación es el anti-patrón principal contra este principio.",
+      "weight": 1.0,
+      "evaluation": "binary",
+      "scoringGuide": {
+        "0": "No se evidencia.",
+        "1": "Se evidencia en la documentación."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    }
+  ],
+  "antipatterns": [
+    {
+      "id": "HCM-AP-01",
+      "description": "Construcción de un componente que ya existe como capacidad corporativa reutilizable.",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "HCM-AP-02",
+      "description": "Adopción de COTS sin capa de anticorrupción ni estrategia de salida.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "HCM-AP-03",
+      "description": "Decisión 'build' sin caso de negocio ni análisis de TCO documentado.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "HCM-AP-04",
+      "description": "Múltiples soluciones internas que cumplen la misma capacidad sin consolidación.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "id": "HCM-MX-01",
+      "name": "Porcentaje de reutilización de componentes",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=50%",
+        "yellow": "20-50%",
+        "red": "<20%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "HCM-MX-02",
+      "name": "Reducción de tiempo de desarrollo",
+      "unit": "% vs baseline",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=30%",
+        "yellow": "10-30%",
+        "red": "<10%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "HCM-MX-03",
+      "name": "Tiempo de implementación de nuevas funcionalidades",
+      "unit": "días",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<15d",
+        "yellow": "15-45d",
+        "red": ">45d"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "HCM-MX-04",
+      "name": "Velocidad de integración COTS",
+      "unit": "semanas",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<8s",
+        "yellow": "8-16s",
+        "red": ">16s"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "weights": {
+    "byLevel": {
+      "enterprise": {
+        "declarative": 0.55,
+        "structural": 0.43,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "domain": {
+        "declarative": 0.5,
+        "structural": 0.48,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "reference": {
+        "declarative": 0.49,
+        "structural": 0.49,
+        "metric": 0.02,
+        "antipatternPenalty": 0.01
+      },
+      "solution": {
+        "declarative": 0.4,
+        "structural": 0.55,
+        "metric": 0.05,
+        "antipatternPenalty": 0.01
+      }
+    }
+  }
+}

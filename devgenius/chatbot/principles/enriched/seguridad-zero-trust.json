@@ -1,0 +1,506 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "seguridad-zero-trust",
+  "name": "Seguridad Zero-Trust",
+  "version": "1.0.0",
+  "declaration": "Los sistemas deben arquitectarse bajo el paradigma: never trust, always verify implementando controles de acceso granulares, autenticación continua y autorización contextual que permitan máxima flexibilidad operativa con control total sobre recursos y datos.",
+  "description": "Arquitectar los sistemas, redes y flujos de trabajo de tal forma que ninguna entidad (entendida como un usuario, dispositivo o aplicación) pueden acceder a recursos del banco sin una adecuada validación.",
+  "scope": "Todas las nuevas soluciones tecnológicas y modernización de sistemas existentes.",
+  "benefits": [
+    "Reducción de superficie de ataque",
+    "Control granular de acceso",
+    "Cumplimiento normativo",
+    "Adaptabilidad al contexto dinámico"
+  ],
+  "iso25010Attributes": [
+    "Seguridad",
+    "Confiabilidad",
+    "Mantenibilidad"
+  ],
+  "applicability": {
+    "enterprise": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "domain": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "reference": {
+      "applies": true,
+      "weight": 1.0
+    },
+    "solution": {
+      "applies": true,
+      "weight": 1.0
+    }
+  },
+  "criteria": [
+    {
+      "id": "ZTR-D-01",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establece zero-trust como el modelo de seguridad organizacional (nunca confiar, siempre verificar)?",
+      "rationale": "El mandato organizacional es prerequisito para adopción transversal.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "ZTR-D-02",
+      "dimension": "declarative",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se definen políticas de mínimo privilegio, cifrado y auditoría como estándares obligatorios?",
+      "rationale": "Las políticas formales de seguridad reducen superficie de ataque.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "ZTR-S-01",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se establece un marco de gobierno de identidades y accesos (IAM) centralizado?",
+      "rationale": "IAM centralizado es la base técnica de zero-trust.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "policy"
+      ]
+    },
+    {
+      "id": "ZTR-S-02",
+      "dimension": "structural",
+      "appliesTo": [
+        "enterprise"
+      ],
+      "question": "¿Se definen estándares de cifrado en tránsito y en reposo para toda la organización?",
+      "rationale": "El cifrado obligatorio protege contra exfiltración de datos.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "policy",
+        "section"
+      ]
+    },
+    {
+      "id": "ZTR-D-03",
+      "dimension": "declarative",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se documentan las decisiones de seguridad del dominio (autenticación, autorización, cifrado)?",
+      "rationale": "Cada dominio debe adaptar el modelo zero-trust a su contexto.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "ZTR-S-03",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Todos los flujos del dominio autentican y autorizan cada solicitud sin confiar en el perímetro?",
+      "rationale": "La autenticación por solicitud es la esencia de zero-trust.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "ZTR-S-04",
+      "dimension": "structural",
+      "appliesTo": [
+        "domain"
+      ],
+      "question": "¿Se implementan controles de acceso granulares basados en roles o atributos?",
+      "rationale": "El acceso granular limita el impacto de credenciales comprometidas.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "ZTR-D-04",
+      "dimension": "declarative",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se documentan patrones de seguridad zero-trust como guías reutilizables (auth flows, mTLS)?",
+      "rationale": "Los patrones de seguridad reutilizables aceleran la adopción correcta.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "ZTR-S-05",
+      "dimension": "structural",
+      "appliesTo": [
+        "reference"
+      ],
+      "question": "¿Se proveen componentes de seguridad reutilizables (SDKs, policies, templates de auth)?",
+      "rationale": "Los componentes reutilizables reducen errores de implementación de seguridad.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay evidencia.",
+        "1": "Evidencia mínima o genérica.",
+        "2": "Evidencia parcial en algunos componentes.",
+        "3": "Evidencia consistente en la mayoría de componentes.",
+        "4": "Evidencia completa y verificable en todos los componentes."
+      },
+      "evidenceTypes": [
+        "pattern",
+        "contract"
+      ]
+    },
+    {
+      "id": "ZTR-D-05",
+      "dimension": "declarative",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se documentan las decisiones de seguridad de la solución con análisis de amenazas (threat model)?",
+      "rationale": "El threat model evidencia análisis proactivo de seguridad.",
+      "weight": 1.0,
+      "evaluation": "likert",
+      "scoringGuide": {
+        "0": "No hay mención ni referencia al respecto.",
+        "1": "Se menciona de forma genérica sin formalización.",
+        "2": "Se describe parcialmente, sin carácter vinculante.",
+        "3": "Se documenta formalmente con criterios claros.",
+        "4": "Se establece formalmente con ADRs, políticas o mecanismos de cumplimiento."
+      },
+      "evidenceTypes": [
+        "section",
+        "adr"
+      ]
+    },
+    {
+      "id": "ZTR-S-06",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Cada endpoint verifica autenticación y autorización independientemente?",
+      "rationale": "La verificación independiente es la implementación concreta de zero-trust.",
+      "weight": 1.0,
+      "evaluation": "binary",
+      "scoringGuide": {
+        "0": "No se evidencia.",
+        "1": "Se evidencia en la documentación."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "ZTR-S-07",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se cifran los datos en tránsito (TLS/mTLS) y en reposo?",
+      "rationale": "El cifrado universal protege contra ataques en la cadena.",
+      "weight": 1.0,
+      "evaluation": "binary",
+      "scoringGuide": {
+        "0": "No se evidencia.",
+        "1": "Se evidencia en la documentación."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    },
+    {
+      "id": "ZTR-S-08",
+      "dimension": "structural",
+      "appliesTo": [
+        "solution"
+      ],
+      "question": "¿Se implementan logs de auditoría para accesos y operaciones sensibles?",
+      "rationale": "La auditoría es el mecanismo de detección y respuesta ante incidentes.",
+      "weight": 1.0,
+      "evaluation": "binary",
+      "scoringGuide": {
+        "0": "No se evidencia.",
+        "1": "Se evidencia en la documentación."
+      },
+      "evidenceTypes": [
+        "section",
+        "diagram"
+      ]
+    }
+  ],
+  "antipatterns": [
+    {
+      "id": "ZTR-AP-01",
+      "description": "Confianza implícita por estar dentro de la red corporativa (perímetro como única defensa).",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "ZTR-AP-02",
+      "description": "Secretos/credenciales en código fuente, repositorios o variables de entorno sin gestor de secretos.",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "ZTR-AP-03",
+      "description": "Comunicación inter-servicio sin TLS/mTLS.",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "ZTR-AP-04",
+      "description": "Cuentas de servicio compartidas con privilegios amplios (no least privilege).",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "ZTR-AP-05",
+      "description": "Datos sensibles sin cifrado en reposo.",
+      "severity": "high",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "ZTR-AP-06",
+      "description": "Ausencia de auditoría/logs de acceso para acciones privilegiadas.",
+      "severity": "medium",
+      "penaltyWeight": 0.1,
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "id": "ZTR-MX-01",
+      "name": "Tiempo de detección de amenazas (MTTD)",
+      "unit": "minutos",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<15min",
+        "yellow": "15-60min",
+        "red": ">60min"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "ZTR-MX-02",
+      "name": "Tasa de falsos positivos",
+      "unit": "%",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<5%",
+        "yellow": "5-15%",
+        "red": ">15%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "ZTR-MX-03",
+      "name": "Precisión de decisiones de acceso",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": ">=99%",
+        "yellow": "95-99%",
+        "red": "<95%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "ZTR-MX-04",
+      "name": "Cumplimiento de políticas",
+      "unit": "%",
+      "direction": "higherIsBetter",
+      "target": {
+        "green": "100%",
+        "yellow": "95-99%",
+        "red": "<95%"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    },
+    {
+      "id": "ZTR-MX-05",
+      "name": "Tiempo de actualización de políticas",
+      "unit": "horas",
+      "direction": "lowerIsBetter",
+      "target": {
+        "green": "<24h",
+        "yellow": "24-72h",
+        "red": ">72h"
+      },
+      "appliesTo": [
+        "enterprise",
+        "domain",
+        "reference",
+        "solution"
+      ]
+    }
+  ],
+  "weights": {
+    "byLevel": {
+      "enterprise": {
+        "declarative": 0.55,
+        "structural": 0.43,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "domain": {
+        "declarative": 0.5,
+        "structural": 0.48,
+        "metric": 0.02,
+        "antipatternPenalty": 0.005
+      },
+      "reference": {
+        "declarative": 0.49,
+        "structural": 0.49,
+        "metric": 0.02,
+        "antipatternPenalty": 0.01
+      },
+      "solution": {
+        "declarative": 0.4,
+        "structural": 0.55,
+        "metric": 0.05,
+        "antipatternPenalty": 0.01
+      }
+    }
+  }
+}
